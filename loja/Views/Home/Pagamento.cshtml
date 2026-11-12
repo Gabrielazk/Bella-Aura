@@ -1,0 +1,294 @@
+﻿@{
+    ViewData["Title"] = "Pagamento Seguro - Bella Aura";
+    var usuarioLogado = ViewBag.UsuarioLogado ?? false;
+    var nomeCaixa = ViewBag.Caixa;
+    var precoCaixa = ViewBag.Preco;
+    var totalGeral = precoCaixa + 180.00; // Exemplo simulando os produtos incluídos
+}
+
+<div class="container my-5 pt-4">
+    <!-- 👑 CABEÇALHO DE CHECKOUT -->
+    <div class="text-center mb-5">
+        <span style="color: #cda45e; font-size: 11px; letter-spacing: 4px; font-weight: 600; text-transform: uppercase;"><i class="fas fa-lock me-2"></i> Ambiente 100% Seguro</span>
+        <h1 class="text-white mt-2" style="font-size: 28px; letter-spacing: 3px; font-weight: 500; text-transform: uppercase;">Finalizar Pagamento</h1>
+    </div>
+
+    <div class="row g-5 justify-content-center">
+        <!-- 💳 COLUNA ESQUERDA: CARTÃO E ENDEREÇO -->
+        <div class="col-md-7">
+
+            <!-- 🏠 BLOCO 1: ENDEREÇO DE ENTREGA -->
+            <div class="p-4 mb-4" style="background-color: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                <h3 class="titulo-bloco mb-4"><i class="fas fa-map-marker-alt me-2" style="color: #cda45e;"></i> Endereço de Entrega</h3>
+
+                @if (usuarioLogado)
+                {
+                    <!-- Usuário Logado: Mostra apenas o resumo para conferência -->
+                    <div class="d-flex justify-content-between align-items-center p-3" style="background-color: rgba(205,164,94,0.02); border: 1px solid rgba(205,164,94,0.15); border-radius: 8px;">
+                        <div>
+                            <p class="m-0 text-white" style="font-weight: 500; font-size: 14px;">Gabi de Oliveira</p>
+                            <p class="m-0 text-muted" style="font-size: 13px;">Av. Paulista, 1000 - Apto 42B - Bela Vista</p>
+                            <p class="m-0 text-muted" style="font-size: 13px;">São Paulo - SP | CEP: 01310-100</p>
+                        </div>
+                        <button type="button" class="btn btn_dourado_borda py-1 px-3" style="font-size: 11px; letter-spacing: 1px;">Alterar</button>
+                    </div>
+                }
+                else
+                {
+                    <!-- Usuário NÃO Logado: Abre os campos para preencher -->
+                    <div class="row g-3">
+                        <div class="col-sm-4">
+                            <label class="form-label-premium">CEP</label>
+                            <input type="text" class="form-control input-premium" placeholder="00000-000">
+                        </div>
+                        <div class="col-sm-8">
+                            <label class="form-label-premium">Endereço (Rua/Av.)</label>
+                            <input type="text" class="form-control input-premium" placeholder="Ex: Av. das Flores">
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label-premium">Número</label>
+                            <input type="text" class="form-control input-premium" placeholder="123">
+                        </div>
+                        <div class="col-sm-8">
+                            <label class="form-label-premium">Complemento</label>
+                            <input type="text" class="form-control input-premium" placeholder="Apto, Bloco, etc. (Opcional)">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label-premium">Bairro</label>
+                            <input type="text" class="form-control input-premium" placeholder="Ex: Centro">
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label-premium">Cidade</label>
+                            <input type="text" class="form-control input-premium" placeholder="Ex: São Paulo">
+                        </div>
+                        <div class="col-sm-2">
+                            <label class="form-label-premium">UF</label>
+                            <input type="text" class="form-control input-premium" maxlength="2" placeholder="SP">
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- 💳 BLOCO 2: DADOS DO CARTÃO -->
+            <div class="p-4" style="background-color: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                <h3 class="titulo-bloco mb-4"><i class="fas fa-credit-card me-2" style="color: #cda45e;"></i> Detalhes do Pagamento</h3>
+
+                <!-- Visual Interativo do Cartão (Dá um ar muito profissional!) -->
+                <div class="cartao-visual p-4 mb-4 text-white position-relative overflow-hidden">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <i class="fas fa-microchip" style="font-size: 32px; color: #dfb76c;"></i>
+                        <span style="font-style: italic; font-weight: bold; font-size: 18px; letter-spacing: 1px; color: #dfb76c;">BELLA AURA</span>
+                    </div>
+                    <div class="card-number-display my-3 text-center" style="font-size: 18px; letter-spacing: 3px; font-weight: 500;">
+                        •••• •••• •••• ••••
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <div>
+                            <div style="font-size: 9px; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 1px;">Titular</div>
+                            <div class="card-holder-display" style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500;">NOME NO CARTÃO</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 9px; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 1px;">Validade</div>
+                            <div class="card-expiry-display" style="font-size: 13px; font-weight: 500;">MM/AA</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label-premium">Número do Cartão</label>
+                        <input type="text" id="card-number" class="form-control input-premium" placeholder="0000 0000 0000 0000" maxlength="19">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label-premium">Nome Impresso no Cartão</label>
+                        <input type="text" id="card-holder" class="form-control input-premium" placeholder="Ex: GABI DE OLIVEIRA">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label-premium">Data de Validade</label>
+                        <input type="text" id="card-expiry" class="form-control input-premium" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label-premium">CVV</label>
+                        <input type="text" id="card-cvv" class="form-control input-premium" placeholder="123" maxlength="4">
+                    </div>
+
+                    <!-- 🔒 GUARDAR CARTÃO PARA COMPRAS FUTURAS -->
+                    <div class="col-12 mt-4">
+                        <div class="form-check custom-checkbox-premium d-flex align-items-center">
+                            <input class="form-check-input me-2" type="checkbox" id="save-card">
+                            <label class="form-check-label text-muted" for="save-card" style="font-size: 12px; cursor: pointer; user-select: none;">
+                                Salvar este cartão com segurança para compras futuras.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 🧾 COLUNA DIREITA: RESUMO FINANCEIRO -->
+        <div class="col-md-4">
+            <div class="p-4" style="background-color: rgba(255, 255, 255, 0.01); border: 1px solid rgba(205,164,94,0.15); border-radius: 12px; position: sticky; top: 20px;">
+                <h3 class="titulo-bloco mb-4"><i class="fas fa-file-invoice-dollar me-2" style="color: #cda45e;"></i> Resumo do Pedido</h3>
+
+                <div class="d-flex justify-content-between mb-3 text-muted" style="font-size: 13px;">
+                    <span>Embalagem (@nomeCaixa)</span>
+                    <span>R$ @precoCaixa.ToString("F2")</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3 text-muted" style="font-size: 13px;">
+                    <span>Fragrâncias e Mimos</span>
+                    <span>R$ 180,00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3 text-muted" style="font-size: 13px;">
+                    <span>Frete</span>
+                    <span style="color: #5cb85c; font-weight: 500;">GRÁTIS</span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pt-3 mt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                    <span class="text-white text-uppercase" style="font-size: 12px; letter-spacing: 1px; font-weight: 500;">Total a Pagar</span>
+                    <span style="color: #cda45e; font-size: 20px; font-weight: 600;">R$ @totalGeral.ToString("F2")</span>
+                </div>
+
+                <!-- Botão de Ação -->
+                <!-- Botão de Ação Interativo -->
+                <button type="button" id="btn-finalizar-pagamento" onclick="processarPagamento()" class="btn btn_dourado_cheio w-100 py-3 text-uppercase mt-4" style="letter-spacing: 2px; font-weight: 600; font-size: 13px; box-shadow: 0 4px 15px rgba(205, 164, 94, 0.2); transition: all 0.3s ease;">
+                    <span id="btn-texto">Confirmar Pagamento <i class="fas fa-shield-alt ms-2"></i></span>
+                    <span id="btn-loader" class="d-none"><i class="fas fa-spinner fa-spin ms-2"></i> Processando...</span>
+                </button>
+
+                <div class="text-center mt-3">
+                    <span class="text-muted" style="font-size: 11px;"><i class="fas fa-lock me-1"></i> Transações protegidas com criptografia de 256 bits.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Views/Home/_RodapeClean.cshtml" />
+
+<!-- 🎨 ESTILOS EXCLUSIVOS -->
+<style>
+    .titulo-bloco {
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 12px;
+    }
+
+    /* 💳 Cartão de Crédito Visual Premium */
+    .cartao-visual {
+        background: linear-gradient(135deg, #0d0d0d 0%, #1c1915 50%, #111 100%);
+        border: 1px solid rgba(205, 164, 94, 0.25);
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        max-width: 380px;
+        margin: 0 auto;
+        aspect-ratio: 1.58 / 1;
+    }
+
+    /* Formulário Premium */
+    .form-label-premium {
+        color: #aaa;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    .input-premium {
+        background-color: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        color: #fff !important;
+        padding: 12px 16px !important;
+        font-size: 13px !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+
+        .input-premium:focus {
+            border-color: #cda45e !important;
+            box-shadow: 0 0 10px rgba(205, 164, 94, 0.1) !important;
+            background-color: rgba(255, 255, 255, 0.04) !important;
+        }
+
+    /* Checkbox Premium */
+    .custom-checkbox-premium .form-check-input {
+        background-color: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(205, 164, 94, 0.3);
+        width: 18px;
+        height: 18px;
+    }
+
+        .custom-checkbox-premium .form-check-input:checked {
+            background-color: #cda45e;
+            border-color: #cda45e;
+        }
+
+        .custom-checkbox-premium .form-check-input:focus {
+            box-shadow: 0 0 8px rgba(205, 164, 94, 0.3);
+        }
+</style>
+
+<!-- 🧠 JS INTERATIVO DE ATUALIZAÇÃO DO CARTÃO -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const inputNum = document.getElementById('card-number');
+        const inputHolder = document.getElementById('card-holder');
+        const inputExpiry = document.getElementById('card-expiry');
+
+        const displayNum = document.querySelector('.card-number-display');
+        const displayHolder = document.querySelector('.card-holder-display');
+        const displayExpiry = document.querySelector('.card-expiry-display');
+
+        // Formata e exibe número do cartão
+        inputNum.addEventListener('input', function(e) {
+            let valor = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formatted = '';
+            for (let i = 0; i < valor.length; i++) {
+                if (i > 0 && i % 4 === 0) formatted += ' ';
+                formatted += valor[i];
+            }
+            e.target.value = formatted;
+            displayNum.innerText = formatted.length > 0 ? formatted : '•••• •••• •••• ••••';
+        });
+
+        // Nome do titular
+        inputHolder.addEventListener('input', function(e) {
+            displayHolder.innerText = e.target.value.toUpperCase() || 'NOME NO CARTÃO';
+        });
+
+        // Validade
+        inputExpiry.addEventListener('input', function(e) {
+            let valor = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            if (valor.length >= 2) {
+                e.target.value = valor.substring(0,2) + '/' + valor.substring(2,4);
+            } else {
+                e.target.value = valor;
+            }
+            displayExpiry.innerText = e.target.value || 'MM/AA';
+        });
+    });
+
+        function processarPagamento() {
+        const btnTexto = document.getElementById('btn-texto');
+        const btnLoader = document.getElementById('btn-loader');
+        const btnPagamento = document.getElementById('btn-finalizar-pagamento');
+
+        // Desabilita o botão para evitar cliques duplos
+        btnPagamento.disabled = true;
+
+        // Troca o texto normal pelo loader de processamento
+        btnTexto.classList.add('d-none');
+        btnLoader.classList.remove('d-none');
+
+        // Simula a aprovação do cartão (2 segundos de suspense chique)
+        setTimeout(function() {
+            // Redireciona para a página de sucesso
+            window.location.href = "/Home/Sucesso";
+        }, 2500);
+    }
+</script>

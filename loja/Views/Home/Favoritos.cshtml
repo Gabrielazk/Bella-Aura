@@ -1,0 +1,227 @@
+﻿@{
+    ViewData["Title"] = "Meus Favoritos - Bella Aura";
+}
+
+<div class="container my-5 pt-4">
+    <!-- 👑 CABEÇALHO DA TELA -->
+    <div class="text-center mb-5">
+        <span style="color: #cda45e; font-size: 11px; letter-spacing: 4px; font-weight: 600; text-transform: uppercase;">Sua Seleção</span>
+        <h1 class="text-white mt-2" style="font-size: 28px; letter-spacing: 3px; font-weight: 500; text-transform: uppercase;">Meus Favoritos</h1>
+        <p class="text-muted" style="font-size: 14px;">Os itens que fizeram seu coração bater mais forte.</p>
+    </div>
+
+    <!-- 🛍️ GRID DE PRODUTOS (Será preenchido dinamicamente via JS) -->
+    <div class="row g-4 justify-content-center" id="grid-favoritos"></div>
+
+    <!-- 🌟 SEÇÃO: LISTA VAZIA (Aparece se não houver itens) -->
+    <div id="tela-vazia" class="text-center py-5 animated-fade d-none">
+        <div class="mb-4">
+            <div class="favoritos-vazio-icon">
+                <i class="far fa-heart"></i>
+            </div>
+        </div>
+        <p class="text-white-50 fs-5">Sua lista de desejos está vazia.</p>
+        <p class="text-muted mx-auto mb-5" style="max-width: 400px; font-size: 14px;">
+            Explore nossas coleções exclusivas de alta perfumaria e mimos premium para adicionar seus favoritos aqui.
+        </p>
+        <a href="/Home/Index" class="btn btn_dourado_cheio px-5 py-3 text-uppercase" style="letter-spacing: 2px; font-weight: 600; font-size: 12px; box-shadow: 0 4px 15px rgba(205, 164, 94, 0.2);">
+            Explorar Coleções
+        </a>
+    </div>
+</div>
+
+<partial name="~/Views/Home/_RodapeClean.cshtml" />
+
+<!-- 🎨 ESTILOS EXCLUSIVOS -->
+<style>
+    .card-produto-premium {
+        background-color: rgba(255, 255, 255, 0.01);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+    }
+
+        .card-produto-premium:hover {
+            border-color: rgba(205, 164, 94, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background-color: rgba(205, 164, 94, 0.01);
+        }
+
+    .img-produto-wrapper {
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        background-color: #0c0c0c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .img-produto-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+        }
+
+    .card-produto-premium:hover .img-produto-wrapper img {
+        transform: scale(1.05);
+        opacity: 0.95;
+    }
+
+    .categoria-produto {
+        color: #cda45e;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    .nome-produto {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+    }
+
+    .preco-produto {
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-desfavoritar {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cda45e;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+    }
+
+        .btn-desfavoritar:hover {
+            background: #cda45e;
+            color: #000;
+            border-color: #cda45e;
+            transform: scale(1.1);
+        }
+
+    .favoritos-vazio-icon {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(255, 255, 255, 0.01);
+        border: 1px dashed rgba(205, 164, 94, 0.25);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        color: rgba(205, 164, 94, 0.4);
+        font-size: 30px;
+    }
+
+    .animated-fade {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- 🧠 JS DINÂMICO PARA EXIBIR SÓ O QUE FOI FAVORITADO -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        carregarFavoritos();
+    });
+
+    function carregarFavoritos() {
+        const grid = document.getElementById('grid-favoritos');
+        const telaVazia = document.getElementById('tela-vazia');
+
+        // Pega a lista salva no navegador ou cria uma vazia
+        let favoritos = JSON.parse(localStorage.getItem('bella_favoritos')) || [];
+
+        if (favoritos.length === 0) {
+            grid.innerHTML = '';
+            telaVazia.classList.remove('d-none');
+            return;
+        }
+
+        telaVazia.classList.add('d-none');
+        grid.innerHTML = '';
+
+        // Monta os cards dinamicamente na tela
+        favoritos.forEach(prod => {
+            const cardHTML = `
+                <div class="col-6 col-md-4 col-lg-3 card-favorito-item" id="fav-${prod.id}">
+                    <div class="card-produto-premium position-relative">
+                        <button class="btn-desfavoritar" onclick="removerFavorito('${prod.id}')" title="Remover">
+                            <i class="fas fa-heart"></i>
+                        </button>
+
+                        <div class="img-produto-wrapper">
+                            <img src="${prod.imagem}" alt="${prod.nome}" class="img-fluid">
+                        </div>
+
+                        <div class="p-3 text-center">
+                            <span class="categoria-produto">${prod.categoria}</span>
+                            <h4 class="nome-produto">${prod.nome}</h4>
+                            <div class="preco-produto">${prod.preco}</div>
+
+                            <button class="btn btn_dourado_borda w-100 py-2 mt-3" style="font-size: 11px; letter-spacing: 1px;">
+                                Mover para o Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            grid.innerHTML += cardHTML;
+        });
+    }
+
+    function removerFavorito(prodId) {
+        let favoritos = JSON.parse(localStorage.getItem('bella_favoritos')) || [];
+
+        // Filtra a lista removendo o item clicado
+        favoritos = favoritos.filter(p => p.id !== prodId);
+        localStorage.setItem('bella_favoritos', JSON.stringify(favoritos));
+
+        const itemHTML = document.getElementById(`fav-${prodId}`);
+        if (itemHTML) {
+            itemHTML.style.transition = 'all 0.4s ease';
+            itemHTML.style.opacity = '0';
+            itemHTML.style.transform = 'scale(0.9)';
+
+            setTimeout(function() {
+                itemHTML.remove();
+                carregarFavoritos();
+            }, 400);
+        }
+    }
+</script>

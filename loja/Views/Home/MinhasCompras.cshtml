@@ -1,0 +1,178 @@
+﻿@{
+    ViewData["Title"] = "Minhas Compras - Bella Aura";
+}
+
+<div class="container py-4 mb-5" style="font-family: 'Poppins', sans-serif; color: #ffffff;">
+
+    <!-- Título da Página -->
+    <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom border-secondary border-opacity-10">
+        <div>
+            <h2 class="m-0 fw-bold" style="font-size: 24px; color: #fff;">Minhas Compras</h2>
+            <small class="text-muted" style="font-size: 12px;">Acompanhe o status e histórico dos seus pedidos de luxo</small>
+        </div>
+        <a href="/Home/Index" class="btn btn-outline-gold btn-sm" style="font-size: 11px;">
+            + Fazer Novo Pedido
+        </a>
+    </div>
+
+    <!-- Filtros Rápidos Interativos -->
+    <div class="d-flex gap-2 mb-4">
+        <button class="btn-filtro-pedido active" onclick="filtrarPedidos('todos', this)">Todos (2)</button>
+        <button class="btn-filtro-pedido" onclick="filtrarPedidos('andamento', this)">Em Andamento (1)</button>
+        <button class="btn-filtro-pedido" onclick="filtrarPedidos('concluido', this)">Concluídos (1)</button>
+    </div>
+
+    <!-- 📦 PEDIDO 1: EM TRÂNSITO -->
+    <div class="card-pedido p-4 mb-4" data-status="andamento">
+        <!-- Cabeçalho do Pedido -->
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 pb-3 border-bottom border-secondary border-opacity-10">
+            <div>
+                <span class="text-muted" style="font-size: 11px;">PEDIDO #BA-98421</span>
+                <div class="fw-bold" style="font-size: 13px; color: #cda45e;">Realizado em 28/07/2026</div>
+            </div>
+            <div>
+                <span class="badge bg-warning text-dark px-3 py-2" style="font-size: 11px; font-weight: 700;">
+                    🚚 EM TRÂNSITO (A Caminho)
+                </span>
+            </div>
+        </div>
+
+        <!-- Conteúdo do Pedido -->
+        <div class="row align-items-center my-3 g-3">
+            <div class="col-md-2 col-4">
+                <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=300&q=80" class="w-100 rounded border border-secondary border-opacity-25" style="height: 90px; object-fit: cover;">
+            </div>
+            <div class="col-md-6 col-8">
+                <h5 class="m-0 fw-bold" style="font-size: 15px; color: #fff;">Kit Luxo Essencial - Edição Suprema</h5>
+                <small class="text-muted d-block mt-1" style="font-size: 12px;">1x Frasco 100ml + Hidratante Satin + Vela Cristal</small>
+                <div class="fw-bold text-white mt-2" style="font-size: 14px;">Total: <span style="color: #cda45e;">R$ 450,00</span></div>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <small class="text-muted d-block" style="font-size: 11px;">Código de Rastreio:</small>
+                <span class="fw-bold text-warning" style="font-size: 13px; letter-spacing: 1px;">BR849201948BA</span>
+            </div>
+        </div>
+
+        <!-- Barra de Progresso do Envio -->
+        <div class="pt-2">
+            <small class="text-muted mb-2 d-block" style="font-size: 11px;">Status da Entrega:</small>
+            <div class="progress" style="height: 6px; background: #222;">
+                <div class="progress-bar" style="width: 65%; background-color: #cda45e;"></div>
+            </div>
+            <div class="d-flex justify-content-between mt-1 text-muted" style="font-size: 10px;">
+                <span class="text-warning">✔ Confirmado</span>
+                <span class="text-warning">✔ Embalado</span>
+                <span class="text-warning">➔ Em Trânsito</span>
+                <span>Entregue</span>
+            </div>
+        </div>
+
+        <!-- Botões de Ação do Pedido -->
+        <div class="mt-3 pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-end gap-2">
+            <button class="btn btn-outline-secondary btn-sm" style="font-size: 11px;" onclick="alert('Código copiado: BR849201948BA')">Copiar Rastreio</button>
+            <button class="btn btn-sm text-dark fw-bold" style="background-color: #cda45e; font-size: 11px;" onclick="window.location.href='/Home/DetalhesPremium'">Ver Produto</button>
+        </div>
+    </div>
+
+    <!-- 📦 PEDIDO 2: ENTREGUE -->
+    <div class="card-pedido p-4 mb-4" data-status="concluido">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 pb-3 border-bottom border-secondary border-opacity-10">
+            <div>
+                <span class="text-muted" style="font-size: 11px;">PEDIDO #BA-87120</span>
+                <div class="fw-bold" style="font-size: 13px; color: #cda45e;">Realizado em 10/06/2026</div>
+            </div>
+            <div>
+                <span class="badge bg-success px-3 py-2" style="font-size: 11px; font-weight: 600;">
+                    ✔ ENTREGUE
+                </span>
+            </div>
+        </div>
+
+        <div class="row align-items-center my-3 g-3">
+            <div class="col-md-2 col-4">
+                <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=300&q=80" class="w-100 rounded border border-secondary border-opacity-25" style="height: 90px; object-fit: cover;">
+            </div>
+            <div class="col-md-6 col-8">
+                <h5 class="m-0 fw-bold" style="font-size: 15px; color: #fff;">Kit Segredos de Jasmim</h5>
+                <small class="text-muted d-block mt-1" style="font-size: 12px;">1x Perfume 50ml + Hidratante 200ml</small>
+                <div class="fw-bold text-white mt-2" style="font-size: 14px;">Total: <span style="color: #cda45e;">R$ 210,00</span></div>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <small class="text-muted d-block" style="font-size: 11px;">Entregue em:</small>
+                <span class="fw-bold text-success" style="font-size: 12px;">14/06/2026</span>
+            </div>
+        </div>
+
+        <div class="mt-3 pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-end gap-2">
+            <button class="btn btn-outline-gold btn-sm" style="font-size: 11px;" onclick="alert('Redirecionando para a sacola com o Kit Segredos de Jasmim...')">Comprar Novamente 🔄</button>
+        </div>
+    </div>
+
+</div>
+
+<partial name="~/Views/Home/_RodapeClean.cshtml" />
+
+<!-- 🧠 SCRIPT DO FILTRO DE COMPRAS -->
+<script>
+    function filtrarPedidos(status, botao) {
+        // 1. Mudar o botão que está selecionado (ativo)
+        document.querySelectorAll('.btn-filtro-pedido').forEach(btn => btn.classList.remove('active'));
+        botao.classList.add('active');
+
+        // 2. Mostrar ou esconder os cards de pedidos conforme a opção
+        const cards = document.querySelectorAll('.card-pedido');
+
+        cards.forEach(card => {
+            const statusCard = card.getAttribute('data-status');
+
+            if (status === 'todos' || statusCard === status) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+<!-- 🎨 ESTILOS EXCLUSIVOS DE MINHAS COMPRAS -->
+<style>
+    .card-pedido {
+        background-color: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+
+        .card-pedido:hover {
+            border-color: rgba(205, 164, 94, 0.3);
+        }
+
+    .btn-filtro-pedido {
+        background: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #888;
+        padding: 6px 16px;
+        font-size: 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-filtro-pedido.active, .btn-filtro-pedido:hover {
+            border-color: #cda45e;
+            color: #cda45e;
+            background: rgba(205, 164, 94, 0.08);
+        }
+
+    .btn-outline-gold {
+        border: 1px solid #cda45e;
+        color: #cda45e;
+        background: transparent;
+        text-decoration: none;
+    }
+
+        .btn-outline-gold:hover {
+            background: #cda45e;
+            color: #000;
+        }
+</style>

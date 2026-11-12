@@ -1,0 +1,364 @@
+﻿@{
+    ViewData["Title"] = "Lançamentos Exclusivos - Bella Aura";
+}
+
+<!-- Adicionei background-color: #000 para manter o fundo do topo chique e escuro -->
+<div class="container-fluid p-0 mb-5" style="font-family: 'Poppins', sans-serif; color: #ffffff; background-color: #000;">
+
+    <!-- ⬅️ BOTÃO VOLTAR ALINHADO NO TOPO -->
+    <div class="container pt-4 pb-2">
+        <a asp-controller="Home" asp-action="Index" asp-fragment="rodape" class="btn_voltar_premium">
+            <i class="fas fa-arrow-left me-2"></i> VOLTAR PARA A HOME
+        </a>
+    </div>
+
+    <!-- 🌌 HERO BANNER IMPACTANTE -->
+    <div class="banner-lancamentos d-flex align-items-center justify-content-center text-center p-4">
+        <div style="max-width: 700px;">
+            <span class="badge mb-2 px-3 py-2" style="background-color: #cda45e; color: #000; font-weight: 700; font-size: 11px; letter-spacing: 2px;">
+                NOVA COLEÇÃO 2026
+            </span>
+            <h1 class="display-5 fw-bold text-white mb-2" style="letter-spacing: -1px;">Lançamentos de Ateliê</h1>
+            <p style="color: #dddddd; font-size: 14px; font-weight: 300;">
+                Conheça as mais novas fragrâncias e kits artesanais da Bella Aura. Notas exclusivas criadas para marcar presença e despertar sensações únicas.
+            </p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+
+        <!-- 🏷️ FAIXA DE BENEFÍCIOS -->
+        <div class="row g-3 mb-5 text-center">
+            <div class="col-md-4">
+                <div class="p-3 card-beneficio">
+                    <span style="font-size: 20px;">✨</span>
+                    <h6 class="text-white fw-bold mt-2" style="font-size: 13px;">Fórmulas Recém-Sintetizadas</h6>
+                    <small class="text-muted" style="font-size: 11px;">Lotes frescos com alta concentração de essência.</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 card-beneficio">
+                    <span style="font-size: 20px;">🎁</span>
+                    <h6 class="text-white fw-bold mt-2" style="font-size: 13px;">Amostra Grátis Inclusa</h6>
+                    <small class="text-muted" style="font-size: 11px;">Em todos os pedidos de lançamentos deste mês.</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 card-beneficio">
+                    <span style="font-size: 20px;">🕯️</span>
+                    <h6 class="text-white fw-bold mt-2" style="font-size: 13px;">Edições de Colecionador</h6>
+                    <small class="text-muted" style="font-size: 11px;">Embalagens rígidas exclusivas e frascos numerados.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🛍️ VITRINE DE LANÇAMENTOS -->
+        <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom border-secondary border-opacity-10">
+            <h3 class="m-0 fw-bold" style="font-size: 20px; color: #cda45e; border-left: 3px solid #cda45e; padding-left: 10px;">
+                Novidades da Temporada
+            </h3>
+            <span class="text-muted" style="font-size: 12px;">Mostrando 4 lançamentos recentes</span>
+        </div>
+
+        <div class="row g-4 mb-5">
+
+            <!-- PRODUTO 1 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-produto-lancamento h-100 p-3 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="position-relative overflow-hidden rounded mb-3" style="height: 240px;">
+                            <span class="badge-tag-novo">NOVO ✦</span>
+                            <!-- ❤️ CORAÇÃO DE FAVORITO -->
+                            <button type="button" class="btn-favorito-card-inline" data-id="lanc-1" onclick="alternarFavorito(this, 'lanc-1', 'Kit Luxo Essencial', 'R$ 450,00', 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80', 'lancamentos')" style="position: absolute; top: 10px; right: 10px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80" class="w-100 h-100 foto-produto" style="object-fit: cover;">
+                        </div>
+                        <small class="text-muted d-block mb-1" style="font-size: 10px; font-style: italic;">Âmbar Baunilha Marcante</small>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 16px;">Kit Luxo Essencial</h5>
+                        <p style="font-size: 11px; color: #aaa; line-height: 1.5;" class="mb-3">
+                            Notas de Bergamota, Orquídea Negra e Baunilha de Madagascar. Acompanha vela em cristal.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="d-flex justify-content-between align-items-baseline mb-3">
+                            <span style="font-size: 11px; color: #777; text-decoration: line-through;">R$ 580,00</span>
+                            <span style="font-size: 20px; font-weight: 700; color: #cda45e;">R$ 450,00</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="/Home/DetalhesPremium" class="btn btn-sm btn-outline-gold w-100" style="font-size: 11px;">Ver Fragrância</a>
+                            <button type="button" class="btn btn-sm btn-gold w-100" style="font-size: 11px;" onclick="adicionarAoCarrinhoLancamento(99, 'Kit Luxo Essencial', 450.00, 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80')">
+                                + Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUTO 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-produto-lancamento h-100 p-3 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="position-relative overflow-hidden rounded mb-3" style="height: 240px;">
+                            <span class="badge-tag-novo">EDIÇÃO LIMITADA</span>
+                            <!-- ❤️ CORAÇÃO DE FAVORITO -->
+                            <button type="button" class="btn-favorito-card-inline" data-id="lanc-2" onclick="alternarFavorito(this, 'lanc-2', 'Kit Orquídea Negra', 'R$ 310,00', 'https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=500&q=80', 'lancamentos')" style="position: absolute; top: 10px; right: 10px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                            <img src="https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=500&q=80" class="w-100 h-100 foto-produto" style="object-fit: cover;">
+                        </div>
+                        <small class="text-muted d-block mb-1" style="font-size: 10px; font-style: italic;">Orquídea & Mirra</small>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 16px;">Kit Orquídea Negra</h5>
+                        <p style="font-size: 11px; color: #aaa; line-height: 1.5;" class="mb-3">
+                            Toque aveludado com notas amadeiradas de fundo. Perfeito para noites memoráveis.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="d-flex justify-content-between align-items-baseline mb-3">
+                            <span style="font-size: 11px; color: #777; text-decoration: line-through;">R$ 390,00</span>
+                            <span style="font-size: 20px; font-weight: 700; color: #cda45e;">R$ 310,00</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="/Home/Detalhes?nome=Kit Orquídea Negra&preco=R$ 310,00&cheiro=Orquídea - Misterioso&imagem=https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=500&q=80" class="btn btn-sm btn-outline-gold w-100" style="font-size: 11px;">Ver Fragrância</a>
+                            <button type="button" class="btn btn-sm btn-gold w-100" style="font-size: 11px;" onclick="adicionarAoCarrinhoLancamento(10, 'Kit Orquídea Negra', 310.00, 'https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=500&q=80')">
+                                + Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUTO 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-produto-lancamento h-100 p-3 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="position-relative overflow-hidden rounded mb-3" style="height: 240px;">
+                            <span class="badge-tag-novo">NOVO ✦</span>
+                            <!-- ❤️ CORAÇÃO DE FAVORITO -->
+                            <button type="button" class="btn-favorito-card-inline" data-id="lanc-3" onclick="alternarFavorito(this, 'lanc-3', 'Kit Baunilha & Poesia', 'R$ 225,00', 'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=500&q=80', 'lancamentos')" style="position: absolute; top: 10px; right: 10px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                            <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=500&q=80" class="w-100 h-100 foto-produto" style="object-fit: cover;">
+                        </div>
+                        <small class="text-muted d-block mb-1" style="font-size: 10px; font-style: italic;">Fava Tonka Adocicada</small>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 16px;">Kit Baunilha & Poesia</h5>
+                        <p style="font-size: 11px; color: #aaa; line-height: 1.5;" class="mb-3">
+                            Sensação aconchegante e envolvente com acordes de flor de laranjeira e baunilha dourada.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="d-flex justify-content-between align-items-baseline mb-3">
+                            <span style="font-size: 11px; color: #777; text-decoration: line-through;">R$ 280,00</span>
+                            <span style="font-size: 20px; font-weight: 700; color: #cda45e;">R$ 225,00</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="/Home/Detalhes?nome=Kit Baunilha & Poesia&preco=R$ 225,00&cheiro=Fava Tonka - Adocicado&imagem=https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=500&q=80" class="btn btn-sm btn-outline-gold w-100" style="font-size: 11px;">Ver Fragrância</a>
+                            <button type="button" class="btn btn-sm btn-gold w-100" style="font-size: 11px;" onclick="adicionarAoCarrinhoLancamento(11, 'Kit Baunilha & Poesia', 225.00, 'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=500&q=80')">
+                                + Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUTO 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-produto-lancamento h-100 p-3 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="position-relative overflow-hidden rounded mb-3" style="height: 240px;">
+                            <span class="badge-tag-novo">EXCLUSIVO ATELIER</span>
+                            <!-- ❤️ CORAÇÃO DE FAVORITO -->
+                            <button type="button" class="btn-favorito-card-inline" data-id="lanc-4" onclick="alternarFavorito(this, 'lanc-4', 'Kit Segredos de Jasmim', 'R$ 210,00', 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=500&q=80', 'lancamentos')" style="position: absolute; top: 10px; right: 10px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                            <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=500&q=80" class="w-100 h-100 foto-produto" style="object-fit: cover;">
+                        </div>
+                        <small class="text-muted d-block mb-1" style="font-size: 10px; font-style: italic;">Jasmim Egípcio</small>
+                        <h5 class="fw-bold text-white mb-2" style="font-size: 16px;">Kit Segredos de Jasmim</h5>
+                        <p style="font-size: 11px; color: #aaa; line-height: 1.5;" class="mb-3">
+                            Fragrância floral intensa com notas solares e um toque fresco de pera selvagem.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="d-flex justify-content-between align-items-baseline mb-3">
+                            <span style="font-size: 11px; color: #777; text-decoration: line-through;">R$ 260,00</span>
+                            <span style="font-size: 20px; font-weight: 700; color: #cda45e;">R$ 210,00</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="/Home/Detalhes?nome=Kit Segredos de Jasmim&preco=R$ 210,00&cheiro=Jasmim - Envolvente&imagem=https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=500&q=80" class="btn btn-sm btn-outline-gold w-100" style="font-size: 11px;">Ver Fragrância</a>
+                            <button type="button" class="btn btn-sm btn-gold w-100" style="font-size: 11px;" onclick="adicionarAoCarrinhoLancamento(12, 'Kit Segredos de Jasmim', 210.00, 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=500&q=80')">
+                                + Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@await Html.PartialAsync("_RodapeHome")
+
+<!-- 🎨 ESTILOS DA PÁGINA DE LANÇAMENTOS -->
+<style>
+    /* 👇 Adicionamos a classe do botão voltar aqui */
+    .btn_voltar_premium {
+        display: inline-flex;
+        align-items: center;
+        color: #cda45e !important;
+        background-color: transparent;
+        border: 1px solid #cda45e;
+        padding: 6px 16px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+    }
+
+        .btn_voltar_premium:hover {
+            background-color: #cda45e !important;
+            color: #000000 !important;
+            box-shadow: 0 0 10px rgba(205, 164, 94, 0.4);
+            transform: translateX(-3px);
+        }
+
+            .btn_voltar_premium:hover i {
+                color: #000000 !important;
+            }
+
+    /* Estilo do botão de favorito nos cards */
+    .btn-favorito-card-inline {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+    }
+
+        .btn-favorito-card-inline:hover {
+            transform: scale(1.15);
+        }
+
+    /* Demais estilos originais */
+    .banner-lancamentos {
+        background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, #070707 100%), url('https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+        height: 280px;
+        border-bottom: 1px solid rgba(205, 164, 94, 0.2);
+    }
+
+    .card-beneficio {
+        background: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+    }
+
+    .card-produto-lancamento {
+        background-color: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+        .card-produto-lancamento:hover {
+            border-color: #cda45e;
+            transform: translateY(-4px);
+        }
+
+    .foto-produto {
+        transition: transform 0.5s ease;
+    }
+
+    .card-produto-lancamento:hover .foto-produto {
+        transform: scale(1.05);
+    }
+
+    .badge-tag-novo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 2;
+        background: #cda45e;
+        color: #000;
+        font-size: 9px;
+        font-weight: 800;
+        padding: 4px 8px;
+        border-radius: 4px;
+        letter-spacing: 1px;
+    }
+
+    .btn-gold {
+        background-color: #cda45e !important;
+        color: #000 !important;
+        border: none !important;
+        font-weight: 700;
+        transition: all 0.3s;
+    }
+
+        .btn-gold:hover {
+            background-color: #b38f51 !important;
+        }
+
+    .btn-outline-gold {
+        border: 1px solid #cda45e !important;
+        color: #cda45e !important;
+        background: transparent !important;
+    }
+
+        .btn-outline-gold:hover {
+            background-color: rgba(205, 164, 94, 0.1) !important;
+        }
+</style>
+
+<!-- 🧠 SCRIPT INTEGRADO COM O NOSSO CARRINHO E FAVORITOS -->
+<script>
+    function adicionarAoCarrinhoLancamento(id, nome, preco, foto) {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+        let itemExistente = carrinho.find(item => item.id === id);
+
+        if (itemExistente) {
+            itemExistente.qtd += 1;
+        } else {
+            carrinho.push({
+                id: id,
+                nome: nome,
+                preco: parseFloat(preco),
+                qtd: 1,
+                foto: foto
+            });
+        }
+
+        localStorage.setItem('carrinhoBellaAura', JSON.stringify(carrinho));
+
+        // Atualiza o badge do menu
+        let badge = document.getElementById('badgeCarrinho');
+        if (badge) {
+            let total = 0;
+            carrinho.forEach(i => total += i.qtd);
+            badge.innerText = total;
+        }
+
+        alert(`✨ Lançamento "${nome}" foi adicionado ao seu carrinho!`);
+    }
+</script>

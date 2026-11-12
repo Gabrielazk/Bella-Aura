@@ -1,0 +1,316 @@
+﻿@{
+    ViewData["Title"] = "Revisar Seu Presente - Bella Aura";
+    var nomeCaixa = ViewBag.Caixa;
+    var precoCaixa = ViewBag.Preco;
+    var totalGeral = precoCaixa + 180.00; // Exemplo simulando que ela adicionou perfumes (R$180)
+}
+
+<div class="container my-5 pt-4">
+    <!-- 👑 TÍTULO DA ETAPA FINAL -->
+    <div class="text-center mb-5">
+        <span style="color: #cda45e; font-size: 11px; letter-spacing: 4px; font-weight: 600; text-transform: uppercase;">Quase Pronto</span>
+        <h1 class="text-white mt-2" style="font-size: 28px; letter-spacing: 3px; font-weight: 500; text-transform: uppercase;">Revisar Seu Presente</h1>
+        <p class="text-muted" style="font-size: 14px;">Confira cada detalhe da sua criação personalizada antes de enviar.</p>
+    </div>
+
+    <div class="row g-5 justify-content-center">
+        <!-- 📦 LADO ESQUERDO: O RESUMO DETALHADO DO KIT -->
+        <div class="col-md-6">
+            <div class="card-revisao p-4" style="background-color: rgba(255, 255, 255, 0.01); border: 1px solid rgba(205, 164, 94, 0.15); border-radius: 12px;">
+                <h3 class="titulo-bloco mb-4"><i class="fas fa-gift me-2" style="color: #cda45e;"></i> Composição do seu Kit</h3>
+
+                <!-- Item 1: A Caixa -->
+                <div class="d-flex justify-content-between align-items-center mb-4 pb-3" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <div class="d-flex align-items-center">
+                        <div class="mini-preview-img me-3">
+                            <i class="fas fa-box" style="color: #cda45e; font-size: 20px;"></i>
+                        </div>
+                        <div>
+                            <h5 class="item-nome m-0">@nomeCaixa</h5>
+                            <span class="item-categoria">Embalagem Exclusiva</span>
+                        </div>
+                    </div>
+                    <span class="item-preco">R$ @precoCaixa.ToString("F2")</span>
+                </div>
+
+                <!-- Item 2: Perfume Exemplo -->
+                <div class="d-flex justify-content-between align-items-center mb-4 pb-3" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <div class="d-flex align-items-center">
+                        <div class="mini-preview-img me-3">
+                            <i class="fas fa-pump-soap" style="color: #cda45e; font-size: 18px;"></i>
+                        </div>
+                        <div>
+                            <h5 class="item-nome m-0">Perfume Essência Gold (50ml)</h5>
+                            <span class="item-categoria">Fragrâncias & Mimos</span>
+                        </div>
+                    </div>
+                    <span class="item-preco">R$ 180,00</span>
+                </div>
+
+                <!-- Item 3: Dedicatória (Apenas se houver mensagem) -->
+                <div id="resumo-cartao-container" class="p-3 mb-4 card-mensagem-interna" style="background: rgba(205, 164, 94, 0.03); border-left: 2px solid #cda45e; border-radius: 4px;">
+                    <span class="d-block mb-1" style="font-size: 11px; color: #cda45e; letter-spacing: 1px; font-weight: 600; text-transform: uppercase;">Mensagem do Cartão:</span>
+                    <p class="m-0 text-white-50" style="font-size: 13px; font-style: italic;">"Que este aroma te lembre todos os dias o quão especial e iluminada você é. Com todo o meu amor."</p>
+                </div>
+
+                <!-- Totalizador -->
+                <div class="d-flex justify-content-between align-items-center pt-3" style="border-top: 1px solid rgba(205,164,94,0.2);">
+                    <span class="text-muted text-uppercase" style="font-size: 12px; letter-spacing: 1px;">Valor Total do Kit</span>
+                    <span style="color: #cda45e; font-size: 22px; font-weight: 600; letter-spacing: 1px;">R$ @totalGeral.ToString("F2")</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✉️ LADO DIREITO: SELEÇÃO DO DESTINO E DADOS DO ENVIO -->
+        <div class="col-md-5">
+            <div class="p-4" style="background-color: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
+                <h3 class="titulo-bloco mb-4"><i class="fas fa-shipping-fast me-2" style="color: #cda45e;"></i> Detalhes do Envio</h3>
+
+                <!-- 🔘 SELETORES DE DESTINO PREMIUM -->
+                <div class="row g-2 mb-4">
+                    <div class="col-6">
+                        <button type="button" id="btn-comprar-mim" class="btn-opcao-destino active w-100" onclick="mudarDestino('mim')">
+                            <i class="fas fa-user me-2"></i> Para Mim
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" id="btn-comprar-presente" class="btn-opcao-destino w-100" onclick="mudarDestino('presente')">
+                            <i class="fas fa-gift me-2"></i> Presentear
+                        </button>
+                    </div>
+                </div>
+
+                <form id="form-envio">
+                    <!-- 👤 SEÇÃO: COMPRAR PARA MIM (Mostra por padrão) -->
+                    <div id="secao-para-mim" class="animated-fade">
+                        <div class="mb-4">
+                            <label class="form-label-premium">Seu Nome para Identificação:</label>
+                            <input type="text" class="form-control input-premium" placeholder="Como quer ser chamada na entrega?">
+                        </div>
+                    </div>
+
+                    <!-- 🎁 SEÇÃO: ENVIAR COMO PRESENTE (Inicia escondida) -->
+                    <div id="secao-presente" class="d-none animated-fade">
+                        <div class="mb-4">
+                            <label class="form-label-premium">Nome do Presenteado:</label>
+                            <input type="text" class="form-control input-premium" placeholder="Nome de quem vai receber o mimo">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label-premium">Telefone de Contato do Presenteado:</label>
+                            <input type="text" class="form-control input-premium" placeholder="(00) 00000-0000">
+                        </div>
+                    </div>
+
+                    <!-- Campo comum: Observação de Entrega (Útil nos dois casos) -->
+                    <div class="mb-4">
+                        <label class="form-label-premium">Observação de Entrega (Opcional):</label>
+                        <textarea class="form-control input-premium" rows="2" placeholder="Ex: Deixar na portaria, campainha quebrada, etc."></textarea>
+                    </div>
+
+                    <!-- Selo de Experiência Premium -->
+                    <div class="d-flex align-items-start p-3 mb-4" style="background-color: rgba(205, 164, 94, 0.02); border: 1px dashed rgba(205, 164, 94, 0.2); border-radius: 8px;">
+                        <i class="fas fa-shield-alt me-3 mt-1" style="color: #cda45e; font-size: 18px;"></i>
+                        <div>
+                            <h6 class="m-0" style="color: #fff; font-size: 13px; font-weight: 500;">Experiência Bella Aura Garantida</h6>
+                            <p class="m-0 text-muted" style="font-size: 11px; line-height: 1.4;" id="selo-texto">
+                                Seu kit de autocuidado será borrifado com nossa essência assinatura antes de fechar a caixa. Prepare-se para um unboxing inesquecível!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Ação Principal -->
+                    <!-- 💳 BOTÃO PRINCIPAL: COMPRA RÁPIDA (IR DIRETO PRO PAGAMENTO) -->
+                    <a href="/Home/Pagamento?caixa=@nomeCaixa&preco=@precoCaixa" class="btn btn_dourado_cheio w-100 py-3 text-uppercase mb-2 text-decoration-none text-center" style="letter-spacing: 2px; font-weight: 600; font-size: 13px; box-shadow: 0 4px 15px rgba(205, 164, 94, 0.2);">
+                        Finalizar e Pagar <i class="fas fa-credit-card ms-2"></i>
+                    </a>
+
+                    <!-- 🛒 BOTÃO SECUNDÁRIO: ADICIONAR AO CARRINHO (MAIS DISCRETO) -->
+                    <button type="button" class="btn btn_dourado_borda w-100 py-2 text-uppercase mb-4" style="letter-spacing: 1px; font-weight: 500; font-size: 11px; opacity: 0.8;">
+                        Adicionar ao Carrinho <i class="fas fa-shopping-bag ms-2"></i>
+                    </button>
+
+                    <!-- ⬅️ LINK DE VOLTAR PARA EDICÃO -->
+                    <a href="/Home/MontarKit" class="btn btn-voltar-edicao w-100 text-center text-muted" style="font-size: 12px; text-decoration: none; display: block;">
+                        <i class="fas fa-arrow-left me-2"></i> Voltar e Editar Kit
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🎨 ESTILOS EXCLUSIVOS DA TELA -->
+<style>
+    .titulo-bloco {
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 12px;
+    }
+
+    .mini-preview-img {
+        width: 44px;
+        height: 44px;
+        background-color: rgba(205, 164, 94, 0.05);
+        border: 1px solid rgba(205, 164, 94, 0.15);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .item-nome {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .item-categoria {
+        color: #666;
+        font-size: 11px;
+        display: block;
+    }
+
+    .item-preco {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    /* 🔘 Botões Seletores Premium */
+    .btn-opcao-destino {
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.6);
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+        .btn-opcao-destino:hover {
+            border-color: rgba(205, 164, 94, 0.5);
+            color: #fff;
+        }
+
+        .btn-opcao-destino.active {
+            background-color: rgba(205, 164, 94, 0.1);
+            border-color: #cda45e;
+            color: #cda45e;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(205, 164, 94, 0.05);
+        }
+
+    /* Formulário Premium */
+    .form-label-premium {
+        color: #aaa;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    .input-premium {
+        background-color: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        color: #fff !important;
+        padding: 12px 16px !important;
+        font-size: 13px !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+
+        .input-premium:focus {
+            border-color: #cda45e !important;
+            box-shadow: 0 0 10px rgba(205, 164, 94, 0.1) !important;
+            background-color: rgba(255, 255, 255, 0.04) !important;
+        }
+
+        .input-premium::placeholder {
+            color: #555 !important;
+            font-size: 12px;
+        }
+
+    /* Botão Voltar para Edição */
+    .btn-voltar-edicao:hover {
+        color: #cda45e !important;
+        transition: color 0.3s ease;
+    }
+
+    /* Animação */
+    .animated-fade {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(3px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- 🧠 JS INTERATIVO DE SELEÇÃO DE DESTINO -->
+<script>
+    function mudarDestino(destino) {
+        const btnMim = document.getElementById('btn-comprar-mim');
+        const btnPresente = document.getElementById('btn-comprar-presente');
+        const secaoMim = document.getElementById('secao-para-mim');
+        const secaoPresente = document.getElementById('secao-presente');
+        const seloTexto = document.getElementById('selo-texto');
+        const resumoCartao = document.getElementById('resumo-cartao-container');
+
+        if (destino === 'mim') {
+            // Ativa botão "Para Mim"
+            btnMim.classList.add('active');
+            btnPresente.classList.remove('active');
+
+            // Mostra campos de "Para Mim" e esconde "Presente"
+            secaoMim.classList.remove('d-none');
+            secaoPresente.classList.add('d-none');
+
+            // Esconde o card da mensagem no resumo à esquerda (já que não há cartão para presente)
+            if (resumoCartao) {
+                resumoCartao.classList.add('d-none');
+            }
+
+            // Altera dinamicamente a mensagem de carinho do selo
+            seloTexto.innerText = "Seu kit de autocuidado será borrifado com nossa essência assinatura antes de fechar a caixa. Prepare-se para um unboxing inesquecível!";
+        } else {
+            // Ativa botão "Presentear"
+            btnMim.classList.remove('active');
+            btnPresente.classList.add('active');
+
+            // Mostra campos de "Presente" e esconde "Para Mim"
+            secaoMim.classList.add('d-none');
+            secaoPresente.classList.remove('d-none');
+
+            // Mostra o card da mensagem com a dedicatória no resumo à esquerda
+            if (resumoCartao) {
+                resumoCartao.classList.remove('d-none');
+            }
+
+            // Altera dinamicamente o texto do selo para o modo presente
+            seloTexto.innerText = "Seu presente será embalado meticulosamente, borrifado com nosso perfume assinatura e entregue com um cartão de dedicatória super elegante.";
+        }
+    }
+
+    // Garante que o estado inicial ao carregar a página já comece configurado "Para Mim"
+    document.addEventListener("DOMContentLoaded", function() {
+        mudarDestino('mim');
+    });
+</script>

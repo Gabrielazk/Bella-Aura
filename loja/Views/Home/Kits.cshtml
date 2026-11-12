@@ -1,0 +1,542 @@
+﻿@{
+    ViewData["Title"] = "Kits Exclusivos - Bella Aura";
+}
+
+<!-- CONTAINER PRINCIPAL COM O LUXURY BACKGROUND -->
+<div class="luxury-bg" style="padding-top: 30px; min-height: 100vh; position: relative; overflow: hidden; background-color: #000000;">
+
+    <!-- 🌟 ONDAS E LINHAS DE FUNDO -->
+    <svg class="abstract-wave wave-1" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-100,100 Q150,300 300,100 T700,200 T1000,-50" fill="none" stroke="rgba(205, 164, 94, 0.18)" stroke-width="2" stroke-linecap="round" />
+        <path d="M-80,130 Q180,310 280,140 T730,180 T950,0" fill="none" stroke="rgba(205, 164, 94, 0.08)" stroke-width="1" stroke-dasharray="5 5" />
+        <path d="M-120,70 Q130,280 320,80 T680,220" fill="none" stroke="rgba(205, 164, 94, 0.05)" stroke-width="1" />
+    </svg>
+
+    <svg class="abstract-wave wave-2" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100,650 Q400,450 550,550 T900,350" fill="none" stroke="rgba(205, 164, 94, 0.15)" stroke-width="1.5" />
+        <path d="M50,680 Q380,480 580,520 T950,380" fill="none" stroke="rgba(205, 164, 94, 0.06)" stroke-width="2" />
+        <path d="M150,620 Q420,420 520,580 T850,320" fill="none" stroke="rgba(205, 164, 94, 0.04)" stroke-width="1" stroke-dasharray="10 5" />
+    </svg>
+
+    <div class="gold-glow"></div>
+
+    <section class="container my-5" style="position: relative; z-index: 2;">
+
+        <!-- Cabeçalho -->
+        <div class="d-flex justify-content-between align-items-center mb-5 pb-3" style="border-bottom: 1px solid rgba(205, 164, 94, 0.15);">
+            <h2 class="titulo_secao" style="color: #cda45e; font-size: 24px; letter-spacing: 2px; margin: 0;">KITS EXCLUSIVOS</h2>
+            <span class="text-muted small" style="letter-spacing: 2px; color: rgba(205, 164, 94, 0.6) !important;">COLEÇÃO COMPLETA</span>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- 📁 COLUNA ESQUERDA: FILTROS (Com botões na horizontal) -->
+            <div class="col-lg-3 col-md-4">
+                <div class="quadro_barra_filtros p-4" style="background-color: #0a0a0a; border: 1px solid #222; border-radius: 6px;">
+
+                    <!-- Filtro 1: Estilo -->
+                    <div class="mb-4 coluna_filtro">
+                        <span class="titulo_filtro d-block mb-3" style="font-size: 14px; letter-spacing: 1px; color: #ffffff;"><i class="fas fa-pump-soap me-2" style="color: #cda45e;"></i>ESTILO</span>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="estilo" data-valor="delicado">Delicado</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="estilo" data-valor="sensual">Sensual</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="estilo" data-valor="fresh">Fresh</button>
+                        </div>
+                    </div>
+
+                    <div style="height: 1px; background-color: #222; margin: 20px 0;"></div>
+
+                    <!-- Filtro 2: Família Olfativa -->
+                    <div class="mb-4 coluna_filtro">
+                        <span class="titulo_filtro d-block mb-3" style="font-size: 14px; letter-spacing: 1px; color: #ffffff;"><i class="fas fa-seedling me-2" style="color: #cda45e;"></i>FAMÍLIA OLFATIVA</span>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="familia" data-valor="doce">Doce</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="familia" data-valor="floral">Floral</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="familia" data-valor="amadeirado">Amadeirado</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="familia" data-valor="citrico">Cítrico</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="familia" data-valor="oriental">Oriental</button>
+                        </div>
+                    </div>
+
+                    <div style="height: 1px; background-color: #222; margin: 20px 0;"></div>
+
+                    <!-- Filtro 3: Preço -->
+                    <div class="mb-4 coluna_filtro">
+                        <span class="titulo_filtro d-block mb-3" style="font-size: 14px; letter-spacing: 1px; color: #ffffff;"><i class="fas fa-tag me-2" style="color: #cda45e;"></i>PREÇO</span>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="preco" data-valor="ate180">Até R$180</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="preco" data-valor="180a250">R$180 - R$250</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="preco" data-valor="acima250">R$250+</button>
+                        </div>
+                    </div>
+
+                    <div style="height: 1px; background-color: #222; margin: 20px 0;"></div>
+
+                    <!-- Filtro 4: Marcas -->
+                    <div class="mb-4 coluna_filtro">
+                        <span class="titulo_filtro d-block mb-3" style="font-size: 14px; letter-spacing: 1px; color: #ffffff;"><i class="fas fa-store me-2" style="color: #cda45e;"></i>MARCA</span>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="marca" data-valor="o boticario">O Boticário</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="marca" data-valor="natura">Natura</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="marca" data-valor="eudora">Eudora</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="marca" data-valor="mix de marcas" style="border-color: rgba(205, 164, 94, 0.4); color: #cda45e;">Mix de Marcas ✨</button>
+                        </div>
+                    </div>
+
+                    <div style="height: 1px; background-color: #222; margin: 20px 0;"></div>
+
+                    <!-- Filtro 5: Ocasião -->
+                    <div class="coluna_filtro">
+                        <span class="titulo_filtro d-block mb-3" style="font-size: 14px; letter-spacing: 1px; color: #ffffff;"><i class="fas fa-gift me-2" style="color: #cda45e;"></i>OCASIÃO</span>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="ocasiao" data-valor="aniversario">Aniversário</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="ocasiao" data-valor="namorados">Dia dos Namorados</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="ocasiao" data-valor="agradecimento">Agradecimento / Gratidão</button>
+                            <button type="button" class="btn btn_filtro_opcao py-1 px-3" data-tipo="ocasiao" data-valor="mimo">Auto-presente / Mimo</button>
+
+                            <!-- Botão Coringa para Ajuda com Presente -->
+                            <button type="button" class="btn text-start w-100 py-2 px-3 mt-2 btn-ajuda-presente" onclick="mostrarBoxPresente()">
+                                <i class="fas fa-magic me-2"></i>Ajuda para Presente ✨
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 🎁 COLUNA DIREITA: VITRINE DE PRODUTOS -->
+            <div class="col-lg-9 col-md-8">
+
+                <!-- 🎁 BOX INTELIGENTE DE AJUDA PARA PRESENTE -->
+                <div id="boxAssistentePresente" class="mb-4 p-4" style="display: none; background: linear-gradient(135deg, #161410 0%, #0a0a0a 100%); border: 1px solid #cda45e; border-radius: 8px; box-shadow: 0 10px 30px rgba(205, 164, 94, 0.15);">
+                    <div class="d-flex align-items-start justify-content-between">
+                        <div class="d-flex align-items-center mb-2">
+                            <div style="width: 40px; height: 40px; background-color: rgba(205, 164, 94, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                                <i class="fas fa-gift" style="color: #cda45e; font-size: 18px;"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: #cda45e; font-size: 16px; margin: 0; font-weight: 600; letter-spacing: 1px;">Procurando o Presente Perfeito?</h4>
+                                <p style="color: #aaaaaa; font-size: 13px; margin: 2px 0 0 0;">Deixe nosso assistente te ajudar a escolher a fragrância ideal!</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="fecharBoxPresente()" style="background: none; border: none; color: #888; font-size: 18px; cursor: pointer;">&times;</button>
+                    </div>
+
+                    <div class="mt-3">
+                        <label style="color: #dddddd; font-size: 12px; margin-bottom: 6px; display: block;">Quem você vai presentear? Conte um pouquinho sobre a pessoa:</label>
+                        <div class="d-flex gap-2">
+                            <input type="text" id="inputDetalhesPresente" class="form-control" placeholder="Ex: Minha mãe, ela ama perfumes florais e marcantes..." style="background-color: #000; border: 1px solid #333; color: #fff; font-size: 13px; padding: 10px 15px;">
+                            <button type="button" onclick="enviarParaChatPresente()" class="btn" style="background-color: #cda45e; color: #000; font-weight: 700; font-size: 12px; padding: 0 20px; white-space: nowrap;">
+                                AJUDA NO CHAT <i class="fas fa-paper-plane ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VITRINE DOS KITS -->
+                <div class="row g-4 m-0 p-0" style="margin-top: -14px !important;">
+
+                    <!-- KIT 1 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="delicado"
+                             data-familia="floral"
+                             data-preco="199.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="aniversario mimo">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_delicado">DELICADO</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Doce Encanto</h3>
+                                <p class="descricao_produto">Leve - Frutal - Suave</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 199,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 2 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="sensual"
+                             data-familia="oriental"
+                             data-preco="229.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="namorados">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_sensual">SENSUAL</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Noite Glam</h3>
+                                <p class="descricao_produto">Chá Branco - Lírio do Vale - Sereno</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 229,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 3 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="fresh"
+                             data-familia="citrico"
+                             data-preco="189.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="mimo agradecimento">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_fresh">FRESH</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Fresh Mood</h3>
+                                <p class="descricao_produto">Alecrim - Eucalipto - Estimulante</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 189,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 4 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="sensual"
+                             data-familia="amadeirado"
+                             data-preco="259.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="agradecimento aniversario">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_sensual">SENSUAL</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Luxo Essencial</h3>
+                                <p class="descricao_produto">Patchouli - Almíscar - Sedutor</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 259,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 5 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="fresh"
+                             data-familia="citrico"
+                             data-preco="179.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="mimo">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_fresh">FRESH</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Brisa de Verão</h3>
+                                <p class="descricao_produto">Alecrim - Eucalipto - Estimulante</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 179,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 6 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="sensual"
+                             data-familia="oriental"
+                             data-preco="289.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="namorados aniversario">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_sensual">SENSUAL</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Sedução Negra</h3>
+                                <p class="descricao_produto">Baunilha - Âmbar - Intenso</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 289,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 7 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="sensual"
+                             data-familia="amadeirado"
+                             data-preco="259.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="agradecimento aniversario">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_sensual">SENSUAL</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Luxo Essencial</h3>
+                                <p class="descricao_produto">Patchouli - Almíscar - Sedutor</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 259,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 8 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="fresh"
+                             data-familia="citrico"
+                             data-preco="179.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="mimo">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_fresh">FRESH</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Brisa de Verão</h3>
+                                <p class="descricao_produto">Alecrim - Eucalipto - Estimulante</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 179,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KIT 9 -->
+                    <div class="col-lg-4 col-md-6 item-vitrine-col">
+                        <div class="card_produto"
+                             data-estilo="sensual"
+                             data-familia="oriental"
+                             data-preco="289.90"
+                             data-marca="mix de marcas"
+                             data-ocasiao="namorados aniversario">
+
+                            <div class="quadro_foto_produto">
+                                <span class="tag_produto tag_sensual">SENSUAL</span>
+                                <i class="far fa-heart icone_favorito"></i>
+                                <div class="texto_foto_placeholder">[ Foto do Kit ]</div>
+                            </div>
+                            <div class="info_produto">
+                                <h3 class="nome_produto">Kit Sedução Negra</h3>
+                                <p class="descricao_produto">Baunilha - Âmbar - Intenso</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="preco_produto">R$ 289,90</span>
+                                    <a href="#" class="btn btn_ver_detalhes">VER DETALHES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+@await Html.PartialAsync("_RodapeHome")
+
+<!-- 🎨 ESTILOS CSS -->
+<style>
+    .luxury-bg {
+        background-color: #000000;
+    }
+
+    .abstract-wave {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .wave-1 {
+        top: -50px;
+        left: -10%;
+        width: 120%;
+        opacity: 0.85;
+    }
+
+    .wave-2 {
+        bottom: 50px;
+        right: -10%;
+        width: 110%;
+        opacity: 0.95;
+    }
+
+    .gold-glow {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(205, 164, 94, 0.04) 0%, transparent 75%);
+        z-index: 1;
+        pointer-events: none;
+        filter: blur(60px);
+    }
+
+    .quadro_barra_filtros .btn_filtro_opcao {
+        border-radius: 4px;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        background: transparent;
+        border: 1px solid #222;
+        color: #888;
+        text-align: center;
+    }
+
+    .btn_filtro_opcao.active-gold-filter {
+        background-color: rgba(205, 164, 94, 0.2) !important;
+        border-color: #cda45e !important;
+        color: #cda45e !important;
+        font-weight: 700 !important;
+        transform: none !important; /* Mantém o botão alinhado na horizontal */
+    }
+
+    .btn-ajuda-presente {
+        background: rgba(205, 164, 94, 0.08);
+        border: 1px dashed #cda45e;
+        color: #cda45e;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+        .btn-ajuda-presente:hover {
+            background: #cda45e;
+            color: #000;
+        }
+</style>
+
+<!-- 🧠 SCRIPT INTELIGENTE DE FILTROS -->
+<script>
+    let filtrosKits = {
+        estilo: null,
+        familia: null,
+        preco: null,
+        marca: null,
+        ocasiao: null
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const botoesFiltro = document.querySelectorAll('.quadro_barra_filtros .btn_filtro_opcao');
+
+        botoesFiltro.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tipo = this.getAttribute('data-tipo');
+                const valor = this.getAttribute('data-valor');
+
+                if (filtrosKits[tipo] === valor) {
+                    filtrosKits[tipo] = null;
+                    this.classList.remove('active-gold-filter');
+                } else {
+                    const grupo = this.closest('.coluna_filtro');
+                    if (grupo) {
+                        grupo.querySelectorAll('.btn_filtro_opcao').forEach(b => b.classList.remove('active-gold-filter'));
+                    }
+                    filtrosKits[tipo] = valor;
+                    this.classList.add('active-gold-filter');
+                }
+
+                if (tipo === 'ocasiao' && (valor === 'aniversario' || valor === 'namorados' || valor === 'agradecimento')) {
+                    mostrarBoxPresente();
+                }
+
+                aplicarFiltrosCruzadosKits();
+            });
+        });
+    });
+
+    function aplicarFiltrosCruzadosKits() {
+        const cards = document.querySelectorAll('.col-lg-9 .card_produto');
+
+        cards.forEach(card => {
+            const col = card.closest('.item-vitrine-col');
+            if (!col) return;
+
+            const estilo = card.getAttribute('data-estilo');
+            const familia = card.getAttribute('data-familia');
+            const preco = parseFloat(card.getAttribute('data-preco') || '0');
+            const marca = card.getAttribute('data-marca');
+            const ocasiao = card.getAttribute('data-ocasiao') || '';
+
+            let passaEstilo = !filtrosKits.estilo || (estilo === filtrosKits.estilo);
+            let passaFamilia = !filtrosKits.familia || (familia === filtrosKits.familia);
+            let passaMarca = !filtrosKits.marca || (marca === filtrosKits.marca);
+            let passaOcasiao = !filtrosKits.ocasiao || ocasiao.includes(filtrosKits.ocasiao);
+
+            let passaPreco = true;
+            if (filtrosKits.preco) {
+                if (filtrosKits.preco === 'ate180') passaPreco = preco <= 180;
+                else if (filtrosKits.preco === '180a250') passaPreco = preco > 180 && preco <= 250;
+                else if (filtrosKits.preco === 'acima250') passaPreco = preco > 250;
+            }
+
+            if (passaEstilo && passaFamilia && passaMarca && passaOcasiao && passaPreco) {
+                col.style.display = 'block';
+            } else {
+                col.style.display = 'none';
+            }
+        });
+    }
+
+    function mostrarBoxPresente() {
+        const box = document.getElementById('boxAssistentePresente');
+        if (box) {
+            box.style.display = 'block';
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+
+    function fecharBoxPresente() {
+        const box = document.getElementById('boxAssistentePresente');
+        if (box) box.style.display = 'none';
+    }
+
+    function enviarParaChatPresente() {
+        const detalhes = document.getElementById('inputDetalhesPresente').value;
+        if (!detalhes.trim()) {
+            alert('Por favor, digite quem você gostaria de presentear para podermos te ajudar!');
+            return;
+        }
+        alert('Redirecionando para o assistente com a mensagem: ' + detalhes);
+    }
+</script>

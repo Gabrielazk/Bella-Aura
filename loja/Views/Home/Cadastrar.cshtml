@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Cadastro - Bella Aura";
+}
+
+<div class="container-fluid login-container" style="min-height: 90vh; background-color: #000;">
+    <div class="row w-100 m-0 align-items-center">
+
+        <div class="col-md-5 d-flex flex-column justify-content-center p-5 text-white position-relative" style="min-height: 70vh;">
+            <div class="mb-4">
+                <img src="~/images/logo_gold.png" alt="Bella Aura" style="max-height: 40px; width: auto;" />
+            </div>
+
+            <h1 class="font_serifada display-5 fw-normal mb-3" style="letter-spacing: 1px;">
+                Sua jornada <br />começa <span style="color: #cda45e;">aqui ✨</span>
+            </h1>
+            <p class="text-secondary" style="max-width: 400px; font-size: 15px;">
+                Entre para descobrir kits exclusivos criados para momentos únicos e acompanhar seus pedidos personalizados.
+            </p>
+        </div>
+
+        <div class="col-md-7 d-flex justify-content-center align-items-center p-4">
+            <div class="w-100" style="max-width: 500px;">
+
+                <div class="mb-4">
+                    <h2 class="text-white h4 fw-light" style="letter-spacing: 1px;">Criar minha conta</h2>
+                    <p class="text-muted small">Preencha seus dados de acesso e endereço para entrega dos kits.</p>
+                </div>
+
+                <form asp-action="Cadastrar" asp-controller="Home" method="post">
+
+                    @if (ViewBag.Erro != null)
+                    {
+                        <div class="alert text-center small mb-4" style="background-color: rgba(220, 53, 69, 0.1); border: 1px solid #dc3545; color: #dc3545; border-radius: 6px;">
+                            @ViewBag.Erro
+                        </div>
+                    }
+
+                    <h6 class="text-uppercase small mb-3" style="color: #c19a5b; letter-spacing: 1px;">1. Dados de Acesso</h6>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small">Nome Completo</label>
+                        <input type="text" name="nome" class="input_login w-100" placeholder="Digite seu nome completo" required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px;" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small">E-mail</label>
+                        <input type="email" name="email" class="input_login w-100" placeholder="Digite seu e-mail" required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px;" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-secondary small">Senha</label>
+                        <div class="position-relative d-flex align-items-center">
+                            <input type="password" name="senha" id="cadastro-senha" class="input_login w-100" placeholder="Crie uma senha de acesso" required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px; padding-right: 45px;" />
+                            <i class="fas fa-eye position-absolute end-0 me-4" style="cursor: pointer; color: #666; z-index: 10;" onclick="toggleSenhaCadastro()"></i>
+                        </div>
+                    </div>
+
+                    <hr style="border-color: #222;" />
+                    <h6 class="text-uppercase small mb-3" style="color: #c19a5b; letter-spacing: 1px;">2. Endereço de Entrega</h6>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label text-secondary small">CEP</label>
+                            <input type="text" name="cep" class="input_login w-100" placeholder="00000-000" required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px;" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label text-secondary small">Número</label>
+                            <input type="text" name="numero" class="input_login w-100" placeholder="Ex: 123" required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px;" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small">Endereço / Rua</label>
+                        <input type="text" name="endereco" class="input_login w-100" placeholder="Av. Paulista, Rua das Flores..." required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px;" />
+                    </div>
+
+                    <div class="row g-2 mb-4">
+                        <div class="col-6">
+                            <label class="form-label text-secondary small">Bairro</label>
+                            <input type="text" name="bairro" class="input_login w-100" placeholder="Digite seu bairro" required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px;" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label text-secondary small">Cidade / UF</label>
+                            <input type="text" name="cidadeEstado" class="input_login w-100" placeholder="São Paulo - SP" required style="background-color: #111; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 6px;" />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn w-100 py-2.5 fw-normal mb-4" style="background-color: #d1a86c; color: #000; border-radius: 6px; font-weight: 500;">
+                        Finalizar meu cadastro
+                    </button>
+
+                    <div class="text-center position-relative mb-4">
+                        <hr style="border-color: #333;" />
+                        <span class="position-absolute top-50 start-50 translate-middle px-3 small text-muted" style="background-color: #000; font-size: 12px;">ou continue com</span>
+                    </div>
+
+                    <div class="row g-2 mb-4">
+                        <div class="col-6">
+                            <button type="button" class="btn w-100 text-white py-2 d-flex align-items-center justify-content-center gap-2" style="background-color: transparent; border: 1px solid #333; border-radius: 6px; font-size: 14px;">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn w-100 text-white py-2 d-flex align-items-center justify-content-center gap-2" style="background-color: transparent; border: 1px solid #333; border-radius: 6px; font-size: 14px;">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-center small text-muted">
+                        Já tem uma conta ativa? <a href="/Home/Login" style="color: #d1a86c; text-decoration: none;">Fazer login</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<partial name="~/Views/Home/_RodapeClean.cshtml" />
+
+<script>
+    function toggleSenhaCadastro() {
+        var input = document.getElementById("cadastro-senha");
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }
+</script>

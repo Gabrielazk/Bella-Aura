@@ -1,0 +1,813 @@
+﻿@{
+    ViewData["Title"] = "Detalhes do Produto - Bella Aura";
+}
+
+<div class="container mt-3 mb-5" style="color: #ffffff; font-family: 'Poppins', sans-serif;">
+
+    <!-- Botão Voltar -->
+    <a href="/Home/Index" class="text-decoration-none mb-3 d-inline-flex align-items-center link-voltar-padrao">
+        <span class="me-2">&#8592;</span> Voltar para a Loja
+    </a>
+
+    <!-- 🛍️ BLOCO PRINCIPAL COMPACTO (ESTILO LOJA GRANDE) -->
+    <div class="row g-4 align-items-start">
+
+        <!-- 📸 COLUNA 1: MINIATURAS + CARROSSEL COMPACTO -->
+        <div class="col-lg-5 col-md-6">
+            <div class="d-flex gap-2">
+                <!-- Miniaturas Laterais -->
+                <div class="d-flex flex-column gap-2" style="width: 60px;">
+                    <img src="@ViewBag.Imagem" class="miniatura-padrao active" onclick="trocarFotoPadrao(this.src)">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=300&q=80" class="miniatura-padrao" onclick="trocarFotoPadrao(this.src)">
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=300&q=80" class="miniatura-padrao" onclick="trocarFotoPadrao(this.src)">
+                </div>
+
+                <!-- Foto Principal -->
+                <div class="flex-grow-1 moldura-foto-padrao" style="height: 380px;">
+                    <img id="fotoPrincipalPadrao" src="@ViewBag.Imagem" class="w-100 h-100" style="object-fit: cover;" alt="@ViewBag.Nome">
+                </div>
+            </div>
+        </div>
+
+        <!-- 📝 COLUNA 2: DADOS DO PERFUME + AVALIAÇÕES -->
+        <div class="col-lg-4 col-md-6">
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="badge" style="background-color: #cda45e; color: #fff; font-size: 10px; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px;">COLEÇÃO EXCLUSIVA</span>
+                <span style="color: #cda45e; font-size: 10px; letter-spacing: 1px; font-weight: 600;">LOTE: REGULAR PRIVATE</span>
+            </div>
+
+            <h1 class="mt-2" style="font-size: 26px; font-weight: 700; letter-spacing: -0.5px; color: #fff;">@ViewBag.Nome</h1>
+            <p class="text-muted mb-2" style="font-size: 13px; font-style: italic; color: #aaaaaa !important;">Família Olfativa: @ViewBag.Cheiro</p>
+
+            <!-- Nota de Avaliações -->
+            <div class="d-flex align-items-center gap-2 mb-3" style="font-size: 12px;">
+                <span style="color: #cda45e; font-weight: 700;">4.9</span>
+                <div style="color: #ffd700; font-size: 11px;">⭐⭐⭐⭐⭐</div>
+                <span class="text-muted">(32 avaliações)</span>
+            </div>
+
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 12px 0;">
+
+            <!-- Preço -->
+            <div class="mb-3">
+                <span style="font-size: 13px; color: #777; text-decoration: line-through; margin-right: 8px;">R$ 340,00</span>
+                <span style="font-size: 28px; font-weight: 700; color: #cda45e;">@ViewBag.Preco</span>
+                <p class="text-success mt-1 mb-0" style="font-size: 12px; font-weight: 500;">➔ Ou em até 6x sem juros no checkout</p>
+            </div>
+
+            <!-- Descrição Breve -->
+            <p style="color: #dddddd; line-height: 1.6; font-size: 13px;">
+                Esse Kit Luxury da Bella Aura representa o ápice da perfumaria fina artesanal. Um conjunto marcante desenvolvido para fixar intensamente na pele e proporcionar uma assinatura olfativa única.
+            </p>
+
+            <!-- Volumetria (Seleção de Tamanho) -->
+            <div class="mt-3">
+                <label style="font-size: 10px; letter-spacing: 1px; color: #888; font-weight: bold; display: block; margin-bottom: 8px;">TAMANHO DO FRASCO:</label>
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn-tamanho active" onclick="selecionarTamanho(this, 340, '50 ml')">50 ml</button>
+                    <button type="button" class="btn-tamanho" onclick="selecionarTamanho(this, 480, '100 ml')">100 ml</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🚚 COLUNA 3: CAIXA DE COMPRA E FRETE REALISTA -->
+        <div class="col-lg-3 col-md-12">
+            <div class="caixa-compra-padrao p-3">
+
+                <!-- Informações de Envio Consciente -->
+                <div class="mb-3">
+                    <div class="d-flex align-items-center gap-2 text-success" style="font-size: 12px; font-weight: 700;">
+                        <span>🚚 Envio Expresso para todo o Brasil</span>
+                    </div>
+                    <small style="color: #aaaaaa; font-size: 11px; display: block;" class="mt-1">
+                        Postagem artesanal rápida em até 24h úteis.
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-flex align-items-center gap-2 text-success" style="font-size: 12px; font-weight: 600;">
+                        <span>🛡️ Garantia de Troca Bella Aura</span>
+                    </div>
+                    <small style="color: #aaaaaa; font-size: 11px; display: block;">
+                        Até 30 dias após o recebimento.
+                    </small>
+                </div>
+
+                <!-- 🌿 IDEIA 3: SELO DE SUSTENTABILIDADE & CRUELTY-FREE -->
+                <div class="mb-3 pt-2 pb-2 border-top border-bottom border-secondary border-opacity-10">
+                    <div class="d-flex align-items-center justify-content-between text-muted" style="font-size: 11px;">
+                        <span>🌿 100% Vegano</span>
+                        <span>🐰 Cruelty-Free</span>
+                        <span>♻️ Reciclável</span>
+                    </div>
+                </div>
+
+                <!-- Estoque -->
+                <div class="mb-3 pt-1">
+                    <span style="font-size: 11px; color: #fff; font-weight: 600;">Estoque disponível</span>
+                    <small style="color: #cda45e; font-size: 11px; display: block;">Pronta entrega no atelier</small>
+                </div>
+
+                <!-- Botões de Ação -->
+                <button class="btn-comprar-agora w-100 mb-2" onclick="window.location.href='/Home/Checkout'">
+                    COMPRAR AGORA
+                </button>
+                <button type="button" class="btn-add-carrinho w-100" onclick="adicionarDiretoNoCarrinho(1, '@ViewBag.Nome', '@ViewBag.Preco', '@ViewBag.Imagem')">
+                    Adicionar ao carrinho
+                </button>
+
+                <div class="mt-3 pt-2 text-center" style="border-top: 1px solid rgba(255,255,255,0.05); font-size: 10px; color: #888;">
+                    <span>Vendido por <strong style="color: #cda45e;">Bella Aura Oficial</strong></span>
+                    <div class="mt-1" style="color: #666;">🔒 Compra Garantida com Seguro Total</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 🌟 RECOMENDAÇÕES / PRODUTOS RELACIONADOS -->
+    <div class="mt-5 pt-4">
+        <h3 class="titulo-secao-fino mb-3">Quem viu este produto também comprou</h3>
+
+        <div class="row g-3">
+            <!-- Recomendação 1 -->
+            <div class="col-md-3 col-6">
+                <div class="card-recomendacao p-2">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                    <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Brisa de Lavanda</h5>
+                    <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 165,00</span>
+                    <a href="/Home/Detalhes?nome=Kit Brisa de Lavanda&preco=R$ 165,00&cheiro=Lavanda - Relaxante&imagem=https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                </div>
+            </div>
+
+            <!-- Recomendação 2 -->
+            <div class="col-md-3 col-6">
+                <div class="card-recomendacao p-2">
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                    <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Segredos de Jasmim</h5>
+                    <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 210,00</span>
+                    <a href="/Home/Detalhes?nome=Kit Segredos de Jasmim&preco=R$ 210,00&cheiro=Jasmim - Envolvente&imagem=https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                </div>
+            </div>
+
+            <!-- Recomendação 3 -->
+            <div class="col-md-3 col-6">
+                <div class="card-recomendacao p-2">
+                    <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                    <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Baunilha & Poesia</h5>
+                    <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 225,00</span>
+                    <a href="/Home/Detalhes?nome=Kit Baunilha & Poesia&preco=R$ 225,00&cheiro=Fava Tonka - Adocicado&imagem=https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                </div>
+            </div>
+
+            <!-- Recomendação 4 -->
+            <div class="col-md-3 col-6">
+                <div class="card-recomendacao p-2">
+                    <img src="https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                    <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Orquídea Negra</h5>
+                    <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 310,00</span>
+                    <a href="/Home/Detalhes?nome=Kit Orquídea Negra&preco=R$ 310,00&cheiro=Orquídea - Misterioso&imagem=https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📦 SEÇÃO: CONTEÚDO DO KIT (COMPACTO) -->
+    <div class="mt-5 pt-3">
+        <h3 class="titulo-secao-fino mb-3">Conteúdo deste Kit Luxury</h3>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3 d-flex align-items-center">
+                    <div class="icone-mini-gold me-3">🧪</div>
+                    <div>
+                        <h6 class="m-0 text-white fw-bold" style="font-size: 13px;">1x Perfume Fino Concentrado</h6>
+                        <small class="text-muted" style="font-size: 11px;">Volumetria selecionada (50ml / 100ml)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3 d-flex align-items-center">
+                    <div class="icone-mini-gold me-3">🧴</div>
+                    <div>
+                        <h6 class="m-0 text-white fw-bold" style="font-size: 13px;">1x Hidratante Satin Body</h6>
+                        <small class="text-muted" style="font-size: 11px;">Frasco Premium de 200ml</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3 d-flex align-items-center">
+                    <div class="icone-mini-gold me-3">🕯️</div>
+                    <div>
+                        <h6 class="m-0 text-white fw-bold" style="font-size: 13px;">1x Vela Aromática Purific</h6>
+                        <small class="text-muted" style="font-size: 11px;">Copo de vidro fosco de 90g</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔮 IDEIA 2: RITUAL DE APLICAÇÃO (GUIA DE USO BELLA AURA) -->
+    <div class="mt-5 pt-3">
+        <h3 class="titulo-secao-fino mb-3">Ritual de Perfumação Exclusivo</h3>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3">
+                    <span class="badge mb-2" style="background: rgba(205, 164, 94, 0.2); color: #cda45e; font-size: 10px;">PASSO 1</span>
+                    <h6 class="text-white fw-bold m-0" style="font-size: 13px;">Hidratação Preparatória</h6>
+                    <p class="text-muted m-0 mt-1" style="font-size: 11px;">Aplique o Satin Body nas áreas quentes (pulsos e pescoço) para fixar a essência na pele.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3">
+                    <span class="badge mb-2" style="background: rgba(205, 164, 94, 0.2); color: #cda45e; font-size: 10px;">PASSO 2</span>
+                    <h6 class="text-white fw-bold m-0" style="font-size: 13px;">Selo de Assinatura</h6>
+                    <p class="text-muted m-0 mt-1" style="font-size: 11px;">Borrife o Eau de Parfum a 15cm de distância sem esfregar, mantendo a integridade das notas.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3">
+                    <span class="badge mb-2" style="background: rgba(205, 164, 94, 0.2); color: #cda45e; font-size: 10px;">PASSO 3</span>
+                    <h6 class="text-white fw-bold m-0" style="font-size: 13px;">Atmosfera Aromática</h6>
+                    <p class="text-muted m-0 mt-1" style="font-size: 11px;">Acenda a Vela Purific no ambiente 20 minutos antes de se arrumar para criar a experiência completa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🌺 PIRÂMIDE OLFATIVA VISUAL -->
+    <div class="mt-5 pt-2">
+        <h3 class="titulo-secao-fino mb-3">Pirâmide Olfativa</h3>
+
+        <!-- Pirâmide Olfativa em Destaque Visual -->
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3 text-center border-gold-subtle">
+                    <small class="text-muted d-block fw-bold" style="font-size: 10px; color: #cda45e !important;">SAÍDA / TOPO (~15 MIN)</small>
+                    <span class="text-white fw-bold d-block mt-1" style="font-size: 13px;">Bergamota & Pimenta Rosa</span>
+                    <small class="text-muted" style="font-size: 11px;">Primeira impressão fresca e efervescente.</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3 text-center border-gold-subtle">
+                    <small class="text-muted d-block fw-bold" style="font-size: 10px; color: #cda45e !important;">CORAÇÃO / CORPO (2H A 4H)</small>
+                    <span class="text-white fw-bold d-block mt-1" style="font-size: 13px;">Orquídea Negra & Jasmim</span>
+                    <small class="text-muted" style="font-size: 11px;">A alma floral elegante do perfume.</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-3 text-center border-gold-subtle">
+                    <small class="text-muted d-block fw-bold" style="font-size: 10px; color: #cda45e !important;">FUNDO / RASTRO (+8H)</small>
+                    <span class="text-white fw-bold d-block mt-1" style="font-size: 13px;">Baunilha & Âmbar Nobre</span>
+                    <small class="text-muted" style="font-size: 11px;">O rastro marcante que permanece na pele.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📊 ESPECIFICAÇÕES TÉCNICAS (COM NOVO TÍTULO E ESPAÇAMENTO) -->
+    <div class="mt-5 pt-3">
+        <h3 class="titulo-secao-fino mb-3">Especificações Técnicas</h3>
+
+        <div class="tabela-fina-container">
+            <table class="table table-dark table-hover m-0" style="font-size: 12px;">
+                <tbody>
+                    <tr>
+                        <td class="text-muted fw-bold ps-4" style="width: 25%;">Marca</td>
+                        <td class="text-white">Bella Aura Premium</td>
+                        <td class="text-muted fw-bold" style="width: 25%;">Família Olfativa</td>
+                        <td style="color: #cda45e;">@ViewBag.Cheiro</td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted fw-bold ps-4">Concentração</td>
+                        <td class="text-white">Eau de Parfum (EDP - 25% de Essência)</td>
+                        <td class="text-muted fw-bold">Fixação na Pele</td>
+                        <td class="text-white">Alta (8h a 14h de durabilidade)</td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted fw-bold ps-4">Notas de Topo</td>
+                        <td class="text-white">Bergamota e Pimenta Rosa</td>
+                        <td class="text-muted fw-bold">Notas de Coração</td>
+                        <td class="text-white">Orquídea Negra e Jasmim Egípcio</td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted fw-bold ps-4">Notas de Fundo</td>
+                        <td class="text-white">Baunilha de Madagascar e Âmbar Nobre</td>
+                        <td class="text-muted fw-bold">Gênero</td>
+                        <td class="text-white">Unissex / Compartilhável</td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted fw-bold ps-4">Origem dos Insumos</td>
+                        <td class="text-white">Grasse, França (Importado)</td>
+                        <td class="text-muted fw-bold">Garantia / Selo</td>
+                        <td class="text-success">Autenticidade Garantida com QrCode</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ❓ SEÇÃO: PERGUNTAS FREQUENTES (FAQ) -->
+    <div class="mt-5 pt-2">
+        <h3 class="titulo-secao-fino mb-3">Dúvidas Frequentes</h3>
+        <div class="accordion accordion-flush" id="faqPadrao">
+
+            <div class="accordion-item faq-item-dark mb-2">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqPadrao1">
+                        ✨ Qual é a fixação das fragrâncias na pele?
+                    </button>
+                </h2>
+                <div id="faqPadrao1" class="accordion-collapse collapse" data-bs-parent="#faqPadrao">
+                    <div class="accordion-body faq-corpo-dark">
+                        Sendo um Eau de Parfum (EDP) com alta concentração de óleos puros, a fixação média varia de 8h a 14h dependendo da hidratação da pele.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item-dark mb-2">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqPadrao2">
+                        🚚 Como funciona o envio e o rastreamento?
+                    </button>
+                </h2>
+                <div id="faqPadrao2" class="accordion-collapse collapse" data-bs-parent="#faqPadrao">
+                    <div class="accordion-body faq-corpo-dark">
+                        Postamos seu pedido em até 24h úteis. O código de rastreio detalhado é enviado automaticamente no seu e-mail e WhatsApp.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item-dark mb-2">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqPadrao3">
+                        🎁 O kit vem pronto para presente?
+                    </button>
+                </h2>
+                <div id="faqPadrao3" class="accordion-collapse collapse" data-bs-parent="#faqPadrao">
+                    <div class="accordion-body faq-corpo-dark">
+                        Sim! Todos os kits acompanham nossa caixa rígida preta de grife com papéis perfumados e laço elegante.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item-dark mb-2">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqPadrao4">
+                        🛡️ Posso efetuar troca se não gostar do cheiro?
+                    </button>
+                </h2>
+                <div id="faqPadrao4" class="accordion-collapse collapse" data-bs-parent="#faqPadrao">
+                    <div class="accordion-body faq-corpo-dark">
+                        Com certeza! Oferecemos 30 dias de garantia para trocas ou devolução sem complicações.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ⭐ SEÇÃO: AVALIAÇÕES E OPINIÕES (INTERATIVAS) -->
+    <div class="mt-5 pt-2">
+        <h3 class="titulo-secao-fino mb-4">Opiniões dos Clientes</h3>
+
+        <div class="row g-4 align-items-start">
+            <!-- Esquerda: Nota Global -->
+            <div class="col-md-4">
+                <div class="card-conteudo-compacto p-4 text-center">
+                    <h2 class="display-5 fw-bold m-0" style="color: #cda45e !important;">4.9</h2>
+                    <div class="text-warning my-1" style="font-size: 14px;">⭐⭐⭐⭐⭐</div>
+                    <small class="text-muted d-block mb-3">Média baseada em 32 avaliações</small>
+
+                    <div class="d-flex flex-column gap-1 text-start" style="font-size: 11px; color: #888;">
+                        <div class="d-flex align-items-center gap-2">
+                            <span>5 ★</span>
+                            <div class="progress flex-grow-1" style="height: 4px; background: #222;">
+                                <div class="progress-bar" style="width: 90%; background-color: #cda45e;"></div>
+                            </div>
+                            <span>90%</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span>4 ★</span>
+                            <div class="progress flex-grow-1" style="height: 4px; background: #222;">
+                                <div class="progress-bar" style="width: 10%; background-color: #cda45e;"></div>
+                            </div>
+                            <span>10%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direita: Formulário e Lista -->
+            <div class="col-md-8">
+                <!-- Formulário -->
+                <div class="card-conteudo-compacto p-3 mb-4">
+                    <h6 class="fw-bold mb-2" style="font-size: 12px; color: #cda45e;">Deixe sua opinião sobre o kit</h6>
+
+                    <form id="formAvaliacao" onsubmit="enviarOpiniao(event)">
+                        <div class="mb-2 d-flex align-items-center gap-2">
+                            <span class="text-muted" style="font-size: 11px;">Sua nota:</span>
+                            <div class="estrelas-voto" style="cursor: pointer; display: flex; gap: 4px;">
+                                <i class="far fa-star estrela-click" data-valor="1" style="font-size: 16px;"></i>
+                                <i class="far fa-star estrela-click" data-valor="2" style="font-size: 16px;"></i>
+                                <i class="far fa-star estrela-click" data-valor="3" style="font-size: 16px;"></i>
+                                <i class="far fa-star estrela-click" data-valor="4" style="font-size: 16px;"></i>
+                                <i class="far fa-star estrela-click" data-valor="5" style="font-size: 16px;"></i>
+                            </div>
+                            <input type="hidden" id="notaSelecionada" value="0">
+                        </div>
+
+                        <div class="mb-2">
+                            <input type="text" class="form-control form-control-sm input-bella" id="nomeCliente" placeholder="Seu nome completo" required>
+                        </div>
+
+                        <div class="mb-2">
+                            <textarea class="form-control form-control-sm input-bella" id="textoOpiniao" rows="2" placeholder="O que você achou do cheiro, da fixação e da entrega?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-sm text-white fw-bold px-3" style="background-color: #cda45e; font-size: 11px;">
+                            PUBLICAR AVALIAÇÃO
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Lista de Comentários -->
+                <div id="listaComentarios" class="d-flex flex-column gap-3">
+                    <div class="pb-2 border-bottom border-secondary border-opacity-10">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold text-white" style="font-size: 13px;">Mariana S.</span>
+                                <span class="badge bg-success-subtle text-success ms-2" style="font-size: 9px;">Compra Verificada ✔</span>
+                            </div>
+                            <small class="text-muted" style="font-size: 10px;">Há 3 dias</small>
+                        </div>
+                        <div style="color: #ffd700; font-size: 10px;" class="my-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p style="font-size: 12px; color: #ccc;" class="m-0">Fixação absurda! Usei para um jantar e no dia seguinte a roupa ainda estava com o cheirinho doce e marcante.</p>
+                    </div>
+
+                    <div class="pb-2 border-bottom border-secondary border-opacity-10">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold text-white" style="font-size: 13px;">Carlos Henrique</span>
+                                <span class="badge bg-success-subtle text-success ms-2" style="font-size: 9px;">Compra Verificada ✔</span>
+                            </div>
+                            <small class="text-muted" style="font-size: 10px;">Há 1 semana</small>
+                        </div>
+                        <div style="color: #ffd700; font-size: 10px;" class="my-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p style="font-size: 12px; color: #ccc;" class="m-0">Comprei para dar de presente para minha esposa e ela amou. A embalagem do kit é super luxuosa.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button class="btn btn-outline-secondary btn-sm" style="font-size: 11px;" onclick="verTodasOpinioes()">VER TODAS AS OPINIÕES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("_RodapeHome")
+
+<!-- 🎨 ESTILOS CSS REFINADOS -->
+<style>
+    .link-voltar-padrao {
+        color: #cda45e;
+        font-size: 13px;
+        transition: all 0.3s;
+    }
+
+        .link-voltar-padrao:hover {
+            color: #fff;
+            transform: translateX(-3px);
+        }
+
+    .miniatura-padrao {
+        width: 100%;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+        .miniatura-padrao.active, .miniatura-padrao:hover {
+            border-color: #cda45e;
+        }
+
+    .moldura-foto-padrao {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        background-color: #111;
+    }
+
+    .btn-tamanho {
+        background: #111111;
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #fff;
+        padding: 6px 14px;
+        font-size: 11px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-tamanho.active, .btn-tamanho:hover {
+            border-color: #cda45e;
+            color: #cda45e;
+            background: rgba(205, 164, 94, 0.08);
+        }
+
+    .caixa-compra-padrao {
+        background: #111111;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+    }
+
+    .btn-comprar-agora {
+        background-color: #cda45e !important;
+        color: #ffffff !important;
+        border: none !important;
+        padding: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-comprar-agora:hover {
+            background-color: #b38f51 !important;
+            transform: translateY(-2px);
+        }
+
+    .btn-add-carrinho {
+        background: transparent !important;
+        border: 1px solid #cda45e !important;
+        color: #cda45e !important;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-add-carrinho:hover {
+            background-color: rgba(205, 164, 94, 0.08) !important;
+        }
+
+    .card-recomendacao {
+        background: #111;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+
+        .card-recomendacao:hover {
+            border-color: #ffd700;
+            transform: translateY(-3px);
+        }
+
+    .btn-outline-gold {
+        border: 1px solid #cda45e;
+        color: #cda45e;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+        .btn-outline-gold:hover {
+            background: #cda45e;
+            color: #000;
+        }
+
+    .titulo-secao-fino {
+        color: #cda45e;
+        font-size: 16px;
+        font-weight: 600;
+        border-left: 3px solid #cda45e;
+        padding-left: 10px;
+    }
+
+    .card-conteudo-compacto {
+        background: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+    }
+
+    .border-gold-subtle {
+        border-color: rgba(205, 164, 94, 0.25) !important;
+    }
+
+    .icone-mini-gold {
+        font-size: 18px;
+        background: rgba(205, 164, 94, 0.1);
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        border: 1px solid rgba(205, 164, 94, 0.2);
+    }
+
+    .tabela-fina-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: #111111;
+    }
+
+        .tabela-fina-container table td {
+            padding: 10px 15px !important;
+            border-color: rgba(255, 255, 255, 0.04) !important;
+        }
+
+    .input-bella {
+        background-color: #0a0a0a !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #fff !important;
+        font-size: 12px !important;
+    }
+
+        .input-bella:focus {
+            border-color: #cda45e !important;
+            box-shadow: none !important;
+        }
+
+    /* FAQ */
+    .faq-item-dark {
+        background: #111111 !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 6px !important;
+        overflow: hidden;
+    }
+
+    .faq-btn-dark {
+        background-color: #111111 !important;
+        color: #ffffff !important;
+        font-size: 13px !important;
+        padding: 12px 16px !important;
+        box-shadow: none !important;
+    }
+
+        .faq-btn-dark::after {
+            filter: invert(75%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(90%) contrast(90%);
+        }
+
+    .faq-corpo-dark {
+        background-color: #0a0a0a;
+        color: #bbbbbb;
+        font-size: 12px;
+        padding: 12px 16px;
+    }
+</style>
+
+<!-- 🧠 JAVASCRIPT DINÂMICO FUNCIONAL -->
+<script>
+    function trocarFotoPadrao(src) {
+        document.getElementById('fotoPrincipalPadrao').src = src;
+        document.querySelectorAll('.miniatura-padrao').forEach(img => img.classList.remove('active'));
+        if (event && event.target) event.target.classList.add('active');
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const estrelas = document.querySelectorAll('.estrela-click');
+        const inputNota = document.getElementById('notaSelecionada');
+
+        estrelas.forEach(estrela => {
+            estrela.addEventListener('click', function() {
+                const valor = parseInt(this.getAttribute('data-valor'));
+                inputNota.value = valor;
+
+                estrelas.forEach(e => {
+                    const eValor = parseInt(e.getAttribute('data-valor'));
+                    if (eValor <= valor) {
+                        e.classList.remove('far');
+                        e.classList.add('fas');
+                        e.style.color = '#ffd700';
+                    } else {
+                        e.classList.remove('fas');
+                        e.classList.add('far');
+                        e.style.color = '#444444';
+                    }
+                });
+            });
+        });
+    });
+
+    function enviarOpiniao(event) {
+        event.preventDefault();
+
+        const nota = parseInt(document.getElementById('notaSelecionada').value);
+        const nome = document.getElementById('nomeCliente').value;
+        const texto = document.getElementById('textoOpiniao').value;
+
+        if (nota === 0) {
+            alert("Por favor Gabi, selecione as estrelinhas para dar sua nota! 😉");
+            return;
+        }
+
+        let estrelasHtml = "";
+        for (let i = 0; i < 5; i++) {
+            if (i < nota) {
+                estrelasHtml += '<i class="fas fa-star" style="color: #ffd700;"></i>';
+            } else {
+                estrelasHtml += '<i class="far fa-star" style="color: #444444;"></i>';
+            }
+        }
+
+        const lista = document.getElementById('listaComentarios');
+        const novoComentario = document.createElement('div');
+        novoComentario.className = "pb-2 border-bottom border-secondary border-opacity-10";
+        novoComentario.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="fw-bold text-white" style="font-size: 13px;">${nome}</span>
+                    <span class="badge bg-success-subtle text-success ms-2" style="font-size: 9px;">Compra Verificada ✔</span>
+                </div>
+                <small class="text-muted" style="font-size: 10px;">Agora mesmo</small>
+            </div>
+            <div class="my-1" style="font-size: 10px;">${estrelasHtml}</div>
+            <p style="font-size: 12px; color: #ccc;" class="m-0">${texto}</p>
+        `;
+
+        lista.insertBefore(novoComentario, lista.firstChild);
+
+        document.getElementById('formAvaliacao').reset();
+        document.getElementById('notaSelecionada').value = "0";
+        document.querySelectorAll('.estrela-click').forEach(e => {
+            e.classList.remove('fas');
+            e.classList.add('far');
+            e.style.color = '#444444';
+        });
+
+        alert("Opinião publicada com sucesso na lista abaixo! 🖤✨");
+    }
+
+    function verTodasOpinioes() {
+        alert("Carregando histórico de opiniões da Bella Aura... 🧾✨");
+    }
+
+    function adicionarDiretoNoCarrinho(id, nome, precoStr, foto) {
+        let precoNumerico = parseFloat(precoStr.toString().replace('R$', '').replace('.', '').replace(',', '.').trim()) || 340.00;
+
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+
+        let itemExistente = carrinho.find(item => item.id === id);
+
+        if (itemExistente) {
+            itemExistente.qtd += 1;
+        } else {
+            carrinho.push({
+                id: id,
+                nome: nome || 'Kit Luxury',
+                preco: precoNumerico,
+                qtd: 1,
+                foto: foto || 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=300&q=80'
+            });
+        }
+
+        localStorage.setItem('carrinhoBellaAura', JSON.stringify(carrinho));
+
+        if (typeof atualizarBadgeGlobal === 'function') {
+            atualizarBadgeGlobal();
+        } else {
+            let elementoBadge = document.getElementById('badgeCarrinho');
+            if (elementoBadge) {
+                let total = 0;
+                carrinho.forEach(i => total += i.qtd);
+                elementoBadge.innerText = total;
+            }
+        }
+
+        alert(`✨ "${nome}" foi adicionado ao seu carrinho!`);
+    }
+
+    let tamanhoAtual = '50 ml';
+    let precoBase = 340.00;
+
+    function selecionarTamanho(botao, novoPreco, tamanho) {
+        // Remove a classe ativa de todos e coloca no clicado
+        document.querySelectorAll('.btn-tamanho, .btn-tamanho-gold').forEach(b => b.classList.remove('active'));
+        botao.classList.add('active');
+
+        // Atualiza variáveis e preço na tela
+        tamanhoAtual = tamanho;
+        precoBase = novoPreco;
+
+        // Atualiza o elemento do preço na tela
+        let elemPreco = document.getElementById('precoDinamico');
+        if (elemPreco) {
+            elemPreco.innerText = `R$ ${novoPreco.toFixed(2).replace('.', ',')}`;
+        }
+    }
+</script>

@@ -1,0 +1,256 @@
+﻿@{
+    ViewData["Title"] = "Finalizar Compra - Bella Aura";
+}
+
+<!-- 🛒 CONTAINER PRINCIPAL DO CHECKOUT (BLINDADO) -->
+<div id="bloco-checkout-principal" class="container my-5" style="color: #ffffff; font-family: 'Poppins', sans-serif;">
+
+    <!-- 🛍️ 1. TELA DE PREENCHIMENTO (Dados, Pagamento e Resumo) -->
+    <div id="tela-formulario" class="row g-5">
+
+        <!-- 📝 LADO ESQUERDO: Formulários de Envio e Pagamento -->
+        <div class="col-md-7">
+            <div class="p-4" style="background-color: #161616; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+
+                <!-- Seção 1: Dados de Entrega -->
+                <h4 style="font-size: 16px; color: #cda45e; font-weight: 600; margin-bottom: 15px;">1. Dados de Entrega</h4>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control input-bella" placeholder="CEP" required style="background-color: #111111; border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px;">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control input-bella" placeholder="Cidade" required style="background-color: #111111; border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px;">
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control input-bella" placeholder="Endereço Completo (Rua, Número, Bairro)" required style="background-color: #111111; border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px;">
+                    </div>
+                </div>
+
+                <hr style="border-color: rgba(255,255,255,0.1);">
+
+                <!-- Seção 2: Escolha de Pagamento -->
+                <h4 class="mt-4" style="font-size: 16px; color: #cda45e; font-weight: 600; margin-bottom: 15px;">2. Forma de Pagamento</h4>
+
+                <div class="d-flex flex-column gap-2 mb-4">
+                    <!-- Opção Pix -->
+                    <label class="p-3 d-flex align-items-center justify-content-between" style="background-color: #111111; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer;">
+                        <div class="d-flex align-items-center">
+                            <input type="radio" name="pagamento" value="pix" class="me-3" checked onchange="togglePagamento()" style="accent-color: #cda45e;">
+                            <span class="fw-bold" style="font-size: 14px;">⚡ PIX (Aprovação Imediata)</span>
+                        </div>
+                        <span style="color: #25d366; font-size: 12px; font-weight: 600;">+ 5% DE DESCONTO</span>
+                    </label>
+
+                    <!-- Opção Cartão -->
+                    <label class="p-3 d-flex align-items-center" style="background-color: #111111; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer;">
+                        <input type="radio" name="pagamento" value="cartao" id="radioCartao" class="me-3" onchange="togglePagamento()" style="accent-color: #cda45e;">
+                        <span class="fw-bold" style="font-size: 14px;">💳 Cartão de Crédito</span>
+                    </label>
+                </div>
+
+                <!-- 💳 FORMULÁRIO DO CARTÃO (Aparece dinamicamente) -->
+                <div id="form-cartao" class="p-4 mb-4 animate-cartao" style="background-color: #111111; border: 1px solid #cda45e; border-radius: 8px; display: none;">
+                    <h5 style="color: #cda45e; font-size: 14px; margin-bottom: 15px;">Dados do Cartão</h5>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <input type="text" class="form-control input-bella" placeholder="Nome impresso no cartão" style="background-color: #000; border: 1px solid #333; color: #fff; padding: 10px;">
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control input-bella" placeholder="Número do cartão" maxlength="16" style="background-color: #000; border: 1px solid #333; color: #fff; padding: 10px;">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control input-bella" placeholder="Validade (MM/AA)" maxlength="5" style="background-color: #000; border: 1px solid #333; color: #fff; padding: 10px;">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control input-bella" placeholder="CVV" maxlength="3" style="background-color: #000; border: 1px solid #333; color: #fff; padding: 10px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🚀 BOTÃO DE COMPRA COM EVENTO DE ANIMAÇÃO -->
+                <button id="btn-concluir" class="btn-finalizar-pedido w-100 mt-3" onclick="processarPedidoReal()">
+                    <span id="txt-botao">CONCLUIR PEDIDO DE LUXO</span>
+                    <span id="spinner-botao" class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true" style="display: none;"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 🛒 LADO DIREITO: Resumo Visual do Kit -->
+        <div class="col-md-5">
+            <div class="p-4" style="background-color: #161616; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); position: sticky; top: 20px;">
+                <h4 style="font-size: 16px; color: #cda45e; font-weight: 600; margin-bottom: 20px;">Resumo do seu Kit</h4>
+
+                <!-- Item Único -->
+                <div class="d-flex align-items-center pb-3 mb-3" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <div style="width: 70px; height: 70px; border-radius: 6px; overflow: hidden; margin-right: 15px;">
+                        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=150&q=80" alt="Produto" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="m-0" style="font-size: 14px; font-weight: 600; color: #ffffff;">Essência Gold Bella</h5>
+                        <small class="text-muted" style="font-size: 12px; display: block;">Tamanho: 50 ml</small>
+                        <small style="color: #cda45e; font-size: 12px;">Incluso: Perfume, Hidratante e Vela</small>
+                    </div>
+                    <div class="text-end">
+                        <span class="fw-bold" style="font-size: 14px; color: #cda45e;">R$ 280,00</span>
+                    </div>
+                </div>
+
+                <!-- Cálculos -->
+                <div class="d-flex justify-content-between mb-2" style="font-size: 14px;">
+                    <span class="text-muted">Subtotal do Kit:</span>
+                    <span>R$ 280,00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2" style="font-size: 14px;">
+                    <span class="text-muted">Frete Bella Express:</span>
+                    <span style="color: #25d366; font-weight: 500;">GRÁTIS</span>
+                </div>
+
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold" style="font-size: 16px;">Total do Pedido:</span>
+                    <span class="fw-bold" style="font-size: 22px; color: #cda45e;">R$ 280,00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🏆 2. TELA DE SUCESSO (Copiada do seu print, ativada após processar) -->
+    <div id="tela-sucesso" class="text-center py-5" style="display: none; max-width: 700px; margin: 0 auto;">
+
+        <!-- Círculo com o Check Dourado -->
+        <div class="d-inline-flex align-items-center justify-content-center mb-4" style="width: 90px; height: 90px; border: 2px solid #cda45e; border-radius: 50%; box-shadow: 0 0 20px rgba(205, 164, 94, 0.2);">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#cda45e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+
+        <h6 style="color: #cda45e; letter-spacing: 3px; font-size: 12px; font-weight: 600;" class="mb-2">MUITO OBRIGADO</h6>
+        <h1 style="font-size: 42px; font-weight: 700; letter-spacing: 1px; margin-bottom: 25px;">PEDIDO CONFIRMADO!</h1>
+
+        <p style="color: #cccccc; line-height: 1.8; font-size: 15px; margin-bottom: 50px;">
+            Sua experiência com a Bella Aura começou. Já recebemos a confirmação do seu pagamento e nosso atelier já está preparando o seu kit personalizado com todo o carinho e perfume que você merece.
+        </p>
+
+        <!-- Caixa de Acompanhamento Luxo -->
+        <div class="p-4 text-start" style="background-color: #161616; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <h5 style="color: #cda45e; font-size: 14px; font-weight: 600; letter-spacing: 1px; margin-bottom: 25px;">ACOMPANHE SEU PEDIDO</h5>
+
+            <div class="d-flex justify-content-between mb-3" style="font-size: 14px;">
+                <span style="color: #888888;">Código do Pedido:</span>
+                <span class="fw-bold">#BA-2026-8942</span>
+            </div>
+            <div class="d-flex justify-content-between mb-3" style="font-size: 14px;">
+                <span style="color: #888888;">Previsão de Envio:</span>
+                <span>Em até 24 hours úteis</span>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size: 14px;">
+                <span style="color: #888888;">E-mail de Confirmação:</span>
+                <span>Enviado para o seu e-mail cadastrado</span>
+            </div>
+        </div>
+
+        <!-- Botão para voltar a navegar -->
+        <a href="/Home/Index" class="btn btn_dourado_cheio px-5 py-3 text-uppercase" style="letter-spacing: 2px; font-weight: 600; font-size: 12px; box-shadow: 0 4px 15px rgba(205, 164, 94, 0.2);">
+            Continuar Navegando
+        </a>
+    </div>
+
+</div>
+
+<partial name="~/Views/Home/_RodapeClean.cshtml" />
+
+<!-- 🎨 BLOCO DE ESTILOS CSS UNIFICADOS -->
+<style>
+    /* Estilo de Foco nos Inputs */
+    .input-bella:focus {
+        background-color: #111111 !important;
+        border-color: #cda45e !important;
+        color: #fff !important;
+        box-shadow: 0 0 0 0.2rem rgba(205, 164, 94, 0.15) !important;
+    }
+
+    /* Botão Finalizar Compra */
+    .btn-finalizar-pedido {
+        background-color: #cda45e !important;
+        color: #ffffff !important;
+        border: none !important;
+        padding: 16px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(205, 164, 94, 0.2);
+    }
+
+        .btn-finalizar-pedido:hover {
+            background-color: #b38f51 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(205, 164, 94, 0.4);
+        }
+
+    /* Efeito Luxuoso de FadeIn para as transições */
+    #tela-sucesso {
+        animation: fadeInSuave 0.8s ease forwards;
+    }
+
+    .animate-cartao {
+        animation: fadeInSuave 0.4s ease forwards;
+    }
+    @@keyframes fadeInSuave {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- 🧠 MOTORES JAVASCRIPT DA TELA -->
+<script>
+    // 1. Abre/Fecha o formulário do cartão dependendo do clique do rádio
+    function togglePagamento() {
+        const radioCartao = document.getElementById('radioCartao');
+        const divCartao = document.getElementById('form-cartao');
+
+        if (radioCartao.checked) {
+            divCartao.style.display = 'block';
+        } else {
+            divCartao.style.display = 'none';
+        }
+    }
+
+    // 2. Transição de Processando -> Tela de Sucesso
+    function processarPedidoReal() {
+        const btn = document.getElementById('btn-concluir');
+        const txtBotao = document.getElementById('txt-botao');
+        const spinner = document.getElementById('spinner-botao');
+
+        const telaFormulario = document.getElementById('tela-formulario');
+        const telaSucesso = document.getElementById('tela-sucesso');
+
+        // Altera o estado do botão para Processando
+        btn.disabled = true;
+        txtBotao.innerText = "PROCESSANDO SEU PAGAMENTO...";
+        spinner.style.display = "inline-block";
+        btn.style.backgroundColor = "#b38f51";
+
+        // Simula a validação por 2.5 segundos e faz a mágica da troca
+        setTimeout(function() {
+            telaFormulario.style.display = "none";
+            telaSucesso.style.display = "block";
+
+            // Rola a tela suavemente para o topo para ver o Check Dourado
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 2500);
+    }
+</script>

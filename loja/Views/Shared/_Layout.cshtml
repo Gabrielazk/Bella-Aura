@@ -1,0 +1,181 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bella Aura - Kits Exclusivos</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="@(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "pagina-home" : "nao-home")">
+
+    <header class="header_secao_escura">
+        <div class="container-fluid container_personalizado">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand logo_link" href="/">
+                    <div class="quadro_placeholder_logo">
+                        BELLA AURA
+                        <span>KITS EXCLUSIVOS</span>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 menu_lista">
+                        <li class="nav-item menu_item">
+                            <a class="nav-link menu_link active" asp-action="Index" asp-controller="Home">INÍCIO</a>
+                        </li>
+                        <a class="nav-link" asp-action="Kits" asp-controller="Home">KITS</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="MontarKit">MONTAR MEU KIT</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Favoritos">FAVORITOS</a>
+                        <a href="/Home/MinhasCompras" class="nav-link">MINHAS COMPRAS</a>
+                    </ul>
+
+                    <form class="d-flex barra_pesquisa_form" role="search">
+                        <input class="form-control me-2 input_pesquisa" type="search" placeholder="Buscar produtos..." aria-label="Search">
+                    </form>
+
+                    <ul class="navbar-nav mb-2 mb-lg-0 icones_acesso">
+                        @if (HttpContextAccessor.HttpContext?.Session?.GetString("UsuarioNome") != null)
+                            {
+                                <span class="nav-link text-white d-inline-block">
+                                    Olá, <strong style="color: #d1a86c;">@HttpContextAccessor.HttpContext?.Session?.GetString("UsuarioNome")</strong> ✨
+                                </span>
+                            <a class="nav-link d-inline-block text-muted small ms-2" asp-action="Logout" asp-controller="Home" style="text-decoration: none;">(Sair)</a>
+                            }
+                        else
+                        {
+                            <!-- Se não estiver logado, continua mostrando o botão original de LOGIN -->
+                            <a class="nav-link" href="/Home/Login">LOGIN</a>
+                        }
+                        <li class="nav-item position-relative">
+                            <a class="nav-link link_icone position-relative" href="/Home/Carrinho">
+                                CARRINHO
+                                <span id="badgeCarrinho" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge_carrinho" style="background-color: #cda45e; color: #000; font-size: 10px; font-weight: 700;">
+                                    0
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-fluid container_personalizado">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var caminho = window.location.pathname;
+        var links = document.querySelectorAll('.nav-link');
+
+        links.forEach(function(link) {
+            link.classList.remove('active'); 
+            var href = link.getAttribute('href');
+
+            // REGRA DE OURO: Se o caminho for vazio, "/" ou "/Home/Index", marca o INÍCIO
+            if (href === "/" || href === "/Home/Index") {
+                if (caminho === "/" || caminho === "" || caminho.toLowerCase() === "/home/index") {
+                    link.classList.add('active');
+                }
+            } 
+            // Para os outros botões (Login, Kits, etc)
+            else if (caminho.toLowerCase() === href.toLowerCase()) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+        function atualizarBadgeGlobal() {
+        // Pega os itens salvos no navegador (se não tiver nada, assume 0)
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+        let totalQtd = 0;
+
+        carrinho.forEach(item => {
+        totalQtd += item.qtd;
+        });
+
+        let badge = document.getElementById('badgeCarrinho');
+        if (badge) {
+        badge.innerText = totalQtd;
+        }
+        }
+
+        // Executa sempre que qualquer página carregar!
+        document.addEventListener("DOMContentLoaded", function() {
+        atualizarBadgeGlobal();
+        });
+
+        // 🛍️ Função Global para Adicionar Produtos ao Carrinho
+        function adicionarAoCarrinho(id, nome, preco, foto) {
+        // Pega os itens já salvos ou cria uma lista vazia
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+
+        // Verifica se o produto já está no carrinho
+        let itemExistente = carrinho.find(item => item.id === id);
+
+        if (itemExistente) {
+        itemExistente.qtd += 1; // Aumenta a quantidade
+        } else {
+        // Adiciona o produto novo
+        carrinho.push({
+        id: id,
+        nome: nome,
+        preco: parseFloat(preco),
+        qtd: 1,
+        foto: foto
+        });
+        }
+
+        // Salva a lista atualizada no navegador
+        localStorage.setItem('carrinhoBellaAura', JSON.stringify(carrinho));
+
+        // Atualiza a bolinha do menu na hora!
+        if (typeof atualizarBadgeGlobal === 'function') {
+        atualizarBadgeGlobal();
+        }
+
+        alert(`✨ "${nome}" foi adicionado ao seu carrinho com sucesso!`);
+        }
+
+        // 🛒 SCRIPT GLOBAL PARA SINCRONIZAR A BOLINHA DO MENU 
+        function atualizarBadgeGlobal() {
+        try {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+        let totalItens = 0;
+        carrinho.forEach(item => {
+        totalItens += (parseInt(item.qtd) || 1);
+        });
+
+        let elementoBadge = document.getElementById('badgeCarrinho');
+        if (elementoBadge) {
+        elementoBadge.innerText = totalItens;
+        }
+        } catch (e) {
+        console.error(e);
+        }
+        }
+
+        // Atualiza assim que qualquer página abre
+        document.addEventListener("DOMContentLoaded", function() {
+        atualizarBadgeGlobal();
+        }); 
+</script>
+</body>
+</html>

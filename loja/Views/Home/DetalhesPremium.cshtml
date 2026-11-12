@@ -1,0 +1,741 @@
+﻿@{
+    ViewData["Title"] = "Kit Luxo Essencial Premium - Bella Aura";
+}
+
+<div class="container-fluid py-3 fundo-gliter-premium" style="font-family: 'Poppins', sans-serif; min-height: 100vh; color: #ffffff;">
+    <div class="container">
+
+        <!-- Botão Voltar -->
+        <a href="/Home/Index" class="text-decoration-none mb-3 d-inline-flex align-items-center link-voltar-premium" style="font-size: 13px;">
+            <span class="me-2">&#8592;</span> Voltar para a Loja
+        </a>
+
+        <!-- 🛍️ ESTRUTURA MERCADO LIVRE VIP -->
+        <div class="row g-4 align-items-start">
+
+            <!-- 📸 COLUNA 1: FOTOS -->
+            <div class="col-lg-5 col-md-6">
+                <div class="d-flex gap-2">
+                    <div class="d-flex flex-column gap-2" style="width: 65px;">
+                        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=300&q=80" class="miniatura-foto active" onclick="trocarFoto(this.src)">
+                        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=300&q=80" class="miniatura-foto" onclick="trocarFoto(this.src)">
+                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=300&q=80" class="miniatura-foto" onclick="trocarFoto(this.src)">
+                    </div>
+
+                    <div class="flex-grow-1 moldura-foto-principal" style="height: 380px;">
+                        <img id="fotoPrincipal" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80" class="w-100 h-100" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 📝 COLUNA 2: DADOS DO PRODUTO -->
+            <div class="col-lg-4 col-md-6">
+                <span class="badge-edicao-ouro mb-2">👑 EDIÇÃO SUPREMA DE COLECIONADOR</span>
+
+                <h1 style="font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 5px;">Kit Luxo Essencial</h1>
+
+                <div class="d-flex align-items-center gap-2 mb-3" style="font-size: 13px;">
+                    <span style="color: #ffd700; font-weight: 700;">4.9</span>
+                    <div style="color: #ffd700; font-size: 11px;">⭐⭐⭐⭐⭐</div>
+                    <span class="text-muted">(487 avaliações)</span>
+                </div>
+
+                <div class="mb-3">
+                    <span style="font-size: 13px; color: #777; text-decoration: line-through;">R$ 580,00</span>
+                    <div class="d-flex align-items-baseline gap-2">
+                        <span style="font-size: 32px; font-weight: 800; color: #ffd700;">R$ 450,00</span>
+                        <span class="badge bg-success" style="font-size: 10px;">22% OFF no Pix</span>
+                    </div>
+                    <small style="color: #aaaaaa; font-size: 12px;">em até 6x de R$ 75,00 sem juros</small>
+                </div>
+
+                <hr class="linha-decorativa-ouro">
+
+                <p style="color: #cccccc; font-size: 13px; line-height: 1.6;">
+                    Desenvolvido para conhecedores da alta perfumaria. Reúne nossas fragrâncias mais raras com hidratante acetinado e vela perfumada de cristal.
+                </p>
+
+                <div class="mt-3">
+                    <label style="font-size: 10px; letter-spacing: 1px; color: #ffd700; font-weight: 700; display: block; margin-bottom: 8px;">TAMANHO DO FRASCO:</label>
+                    <div class="d-flex gap-2">
+                        <button class="btn-tamanho-gold active">100 ml (Edição Luxo)</button>
+                        <button class="btn-tamanho-gold">150 ml (Especial)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🚚 COLUNA 3: CAIXA DE COMPRA -->
+            <div class="col-lg-3 col-md-12">
+                <div class="caixa-compra-ml p-3">
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2 text-success" style="font-size: 13px; font-weight: 700;">
+                            <span>🚚 Chegará grátis amanhã</span>
+                        </div>
+                        <small style="color: #aaaaaa; font-size: 11px; display: block;" class="mt-1">
+                            Comprando nas próximas 4h 20min.
+                        </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2 text-success" style="font-size: 12px; font-weight: 600;">
+                            <span>🛡️ Garantia VIP Bella Aura</span>
+                        </div>
+                        <small style="color: #aaaaaa; font-size: 11px; display: block;">
+                            Até 30 dias após o recebimento.
+                        </small>
+                    </div>
+
+                    <!-- 🌿 SELO DE SUSTENTABILIDADE & CRUELTY-FREE -->
+                    <div class="mb-3 pt-2 pb-2 border-top border-bottom border-secondary border-opacity-10">
+                        <div class="d-flex align-items-center justify-content-between text-muted" style="font-size: 11px;">
+                            <span>🌿 100% Vegano</span>
+                            <span>🐰 Cruelty-Free</span>
+                            <span>♻️ Reciclável</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 pt-1">
+                        <span style="font-size: 12px; color: #fff; font-weight: 600;">Estoque disponível</span>
+                        <small style="color: #ffd700; font-size: 11px; display: block;">(Apenas 8 unidades restantes)</small>
+                    </div>
+
+                    <!-- Botões -->
+                    <button class="btn-comprar-agora-ml w-100 mb-2" onclick="window.location.href='/Home/Checkout'">
+                        Comprar agora
+                    </button>
+                    <button type="button" class="btn-add-carrinho-ml w-100" onclick="adicionarAoCarrinhoPremium(99, 'Kit Luxo Essencial', 450.00, 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80')">
+                        Adicionar ao Carrinho
+                    </button>
+
+                    <div class="mt-3 pt-2 text-center" style="border-top: 1px solid rgba(255,255,255,0.05); font-size: 11px; color: #888;">
+                        <span>Vendido e entregue por <strong style="color: #cda45e;">Bella Aura Oficial</strong></span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 🌟 RECOMENDAÇÕES / PRODUTOS RELACIONADOS -->
+        <div class="mt-5 pt-4">
+            <h3 class="titulo-secao-fino mb-3">Quem viu este produto também comprou</h3>
+
+            <div class="row g-3">
+                <div class="col-md-3 col-6">
+                    <div class="card-recomendacao-gold p-2">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                        <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Brisa de Lavanda</h5>
+                        <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 165,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Brisa de Lavanda&preco=R$ 165,00&cheiro=Lavanda - Relaxante&imagem=https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold-sm w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="card-recomendacao-gold p-2">
+                        <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                        <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Segredos de Jasmim</h5>
+                        <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 210,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Segredos de Jasmim&preco=R$ 210,00&cheiro=Jasmim - Envolvente&imagem=https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold-sm w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="card-recomendacao-gold p-2">
+                        <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                        <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Baunilha & Poesia</h5>
+                        <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 225,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Baunilha & Poesia&preco=R$ 225,00&cheiro=Fava Tonka - Adocicado&imagem=https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold-sm w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="card-recomendacao-gold p-2">
+                        <img src="https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=400&q=80" class="w-100 rounded" style="height: 160px; object-fit: cover;">
+                        <h5 class="mt-2 text-truncate" style="font-size: 13px; color: #fff; margin-bottom: 2px;">Kit Orquídea Negra</h5>
+                        <span style="color: #ffd700; font-weight: 700; font-size: 14px;">R$ 310,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Orquídea Negra&preco=R$ 310,00&cheiro=Orquídea - Misterioso&imagem=https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=800&q=80" class="btn btn-outline-gold-sm w-100 mt-2" style="font-size: 11px; padding: 4px;">Ver detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 📦 SEÇÃO: CONTEÚDO DO KIT (COMPACTO VIP) -->
+        <div class="mt-5 pt-3">
+            <h3 class="titulo-secao-fino mb-3">Conteúdo deste Kit Luxo Essencial</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3 d-flex align-items-center">
+                        <div class="icone-mini-gold me-3">🧪</div>
+                        <div>
+                            <h6 class="m-0 text-white fw-bold" style="font-size: 13px;">1x Perfume Raro Concentrado</h6>
+                            <small class="text-muted" style="font-size: 11px;">100ml / 150ml (Edição Suprema)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3 d-flex align-items-center">
+                        <div class="icone-mini-gold me-3">🧴</div>
+                        <div>
+                            <h6 class="m-0 text-white fw-bold" style="font-size: 13px;">1x Body Lotion Acetinado Gold</h6>
+                            <small class="text-muted" style="font-size: 11px;">Frasco de Cristal de 250ml</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3 d-flex align-items-center">
+                        <div class="icone-mini-gold me-3">🕯️</div>
+                        <div>
+                            <h6 class="m-0 text-white fw-bold" style="font-size: 13px;">1x Vela Aromática em Cristal</h6>
+                            <small class="text-muted" style="font-size: 11px;">Pavio duplamente trançado de 180g</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔮 RITUAL DE APLICAÇÃO (GUIA DE USO BELLA AURA VIP) -->
+        <div class="mt-5 pt-3">
+            <h3 class="titulo-secao-fino mb-3">Ritual de Perfumação Exclusivo</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3">
+                        <span class="badge mb-2" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; font-size: 10px;">PASSO 1</span>
+                        <h6 class="text-white fw-bold m-0" style="font-size: 13px;">Hidratação Preparatória Gold</h6>
+                        <p class="text-muted m-0 mt-1" style="font-size: 11px;">Aplique o Body Lotion Acetinado nos pontos de pulsação para selar a pele.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3">
+                        <span class="badge mb-2" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; font-size: 10px;">PASSO 2</span>
+                        <h6 class="text-white fw-bold m-0" style="font-size: 13px;">Borrife a Essência Rara</h6>
+                        <p class="text-muted m-0 mt-1" style="font-size: 11px;">A 15cm da pele, aplique o perfume sem esfregar, garantindo a projeção da orquídea e do âmbar.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3">
+                        <span class="badge mb-2" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; font-size: 10px;">PASSO 3</span>
+                        <h6 class="text-white fw-bold m-0" style="font-size: 13px;">Atmosfera Aromática</h6>
+                        <p class="text-muted m-0 mt-1" style="font-size: 11px;">Acenda a Vela de Cristal 20 minutos antes de se preparar para criar o ambiente perfeito.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌺 PIRÂMIDE OLFATIVA VISUAL -->
+        <div class="mt-5 pt-2">
+            <h3 class="titulo-secao-fino mb-3">Pirâmide Olfativa</h3>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3 text-center border-gold-glow">
+                        <small class="d-block fw-bold" style="font-size: 10px; color: #ffd700 !important;">SAÍDA / TOPO (~15 MIN)</small>
+                        <span class="text-white fw-bold d-block mt-1" style="font-size: 13px;">Bergamota & Flor de Laranjeira</span>
+                        <small class="text-muted" style="font-size: 11px;">Saída fresca, efervescente e sofisticada.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3 text-center border-gold-glow">
+                        <small class="d-block fw-bold" style="font-size: 10px; color: #ffd700 !important;">CORAÇÃO / CORPO (2H A 4H)</small>
+                        <span class="text-white fw-bold d-block mt-1" style="font-size: 13px;">Orquídea Negra & Baunilha Bourbon</span>
+                        <small class="text-muted" style="font-size: 11px;">Corpo adocicado envolvente de presença marcante.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-3 text-center border-gold-glow">
+                        <small class="d-block fw-bold" style="font-size: 10px; color: #ffd700 !important;">FUNDO / RASTRO (+8H)</small>
+                        <span class="text-white fw-bold d-block mt-1" style="font-size: 13px;">Âmbar Nobre & Sândalo Dourado</span>
+                        <small class="text-muted" style="font-size: 11px;">Fixação aveludada e duradoura na pele.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 📊 ESPECIFICAÇÕES TÉCNICAS (COM TÍTULO E ESPAÇAMENTO) -->
+        <div class="mt-5 pt-3">
+            <h3 class="titulo-secao-fino mb-3">Especificações Técnicas</h3>
+
+            <div class="tabela-fina-container">
+                <table class="table table-dark table-hover m-0" style="font-size: 12px;">
+                    <tbody>
+                        <tr>
+                            <td class="text-muted fw-bold ps-4" style="width: 25%;">Marca</td>
+                            <td class="text-white">Bella Aura Private Collection</td>
+                            <td class="text-muted fw-bold" style="width: 25%;">Família Olfativa</td>
+                            <td style="color: #ffd700;">Âmbar Baunilha Marcante</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted fw-bold ps-4">Concentração</td>
+                            <td class="text-white">Eau de Parfum (EDP - 25% de Essência Pura)</td>
+                            <td class="text-muted fw-bold">Fixação na Pele</td>
+                            <td class="text-white">Intensa (10h a 16h de durabilidade)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted fw-bold ps-4">Notas de Topo</td>
+                            <td class="text-white">Bergamota e Flor de Laranjeira</td>
+                            <td class="text-muted fw-bold">Notas de Coração</td>
+                            <td class="text-white">Orquídea Negra e Baunilha Bourbon</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted fw-bold ps-4">Notas de Fundo</td>
+                            <td class="text-white">Âmbar Nobre e Sândalo Dourado</td>
+                            <td class="text-muted fw-bold">Gênero</td>
+                            <td class="text-white">Unissex / Compartilhável</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted fw-bold ps-4">Origem dos Insumos</td>
+                            <td class="text-white">Grasse, França (Sintetizado sob demanda)</td>
+                            <td class="text-muted fw-bold">Garantia / Selo</td>
+                            <td class="text-success">Selo Ouro de Autenticidade Bella Aura</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ❓ DÚVIDAS FREQUENTES -->
+        <div class="mt-5 pt-2">
+            <h3 class="titulo-secao-fino mb-3">Perguntas Frequentes</h3>
+            <div class="accordion accordion-flush" id="faqKitPremium">
+
+                <div class="accordion-item faq-item-dark mb-2">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button faq-btn-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            ✨ Qual é o prazo de fixação das fragrâncias na pele?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqKitPremium">
+                        <div class="accordion-body faq-corpo-dark">
+                            Por se tratar de um Eau de Parfum (EDP) com 25% de concentração de óleos essenciais puros, a fixação média é de 10h a 16h.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item-dark mb-2">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button faq-btn-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            🎁 A caixa de presente rígida acompanha o pedido?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqKitPremium">
+                        <div class="accordion-body faq-corpo-dark">
+                            Com certeza! Sendo a Edição Suprema de Colecionador, o kit é enviado dentro da nossa caixa rígida especial com fecho magnético e fita em cetim dourada.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item-dark mb-2">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button faq-btn-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            🚚 Como funciona a entrega rápida VIP?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqKitPremium">
+                        <div class="accordion-body faq-corpo-dark">
+                            Os kits da linha Premium possuem prioridade máxima de despacho em nosso atelier. O envio é feito em modalidade expressa com rastreamento em tempo real.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ⭐ OPINIÕES DOS CLIENTES -->
+        <div class="mt-5 pt-2 mb-5">
+            <h3 class="titulo-secao-fino mb-4">Opiniões dos Clientes</h3>
+
+            <div class="row g-4 align-items-start">
+                <div class="col-md-4">
+                    <div class="card-conteudo-vip p-4 text-center">
+                        <h2 class="display-5 fw-bold m-0" style="color: #ffd700 !important;">4.9</h2>
+                        <div style="color: #ffd700; font-size: 14px;" class="my-1">⭐⭐⭐⭐⭐</div>
+                        <small class="text-muted d-block mb-3">Média baseada em 487 avaliações</small>
+
+                        <div class="d-flex flex-column gap-1 text-start" style="font-size: 11px; color: #888;">
+                            <div class="d-flex align-items-center gap-2">
+                                <span>5 ★</span>
+                                <div class="progress flex-grow-1" style="height: 4px; background: #222;">
+                                    <div class="progress-bar" style="width: 95%; background-color: #ffd700;"></div>
+                                </div>
+                                <span>95%</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span>4 ★</span>
+                                <div class="progress flex-grow-1" style="height: 4px; background: #222;">
+                                    <div class="progress-bar" style="width: 5%; background-color: #ffd700;"></div>
+                                </div>
+                                <span>5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-conteudo-vip p-3 mb-4">
+                        <h6 class="fw-bold mb-2" style="font-size: 12px; color: #ffd700;">Deixe sua opinião sobre esta Edição Suprema</h6>
+
+                        <form id="formAvaliacaoPremium" onsubmit="enviarOpiniaoPremium(event)">
+                            <div class="mb-2 d-flex align-items-center gap-2">
+                                <span class="text-muted" style="font-size: 11px;">Sua nota:</span>
+                                <div class="estrelas-voto" style="cursor: pointer; display: flex; gap: 4px;">
+                                    <i class="far fa-star estrela-click-gold" data-valor="1" style="font-size: 16px;"></i>
+                                    <i class="far fa-star estrela-click-gold" data-valor="2" style="font-size: 16px;"></i>
+                                    <i class="far fa-star estrela-click-gold" data-valor="3" style="font-size: 16px;"></i>
+                                    <i class="far fa-star estrela-click-gold" data-valor="4" style="font-size: 16px;"></i>
+                                    <i class="far fa-star estrela-click-gold" data-valor="5" style="font-size: 16px;"></i>
+                                </div>
+                                <input type="hidden" id="notaSelecionadaGold" value="0">
+                            </div>
+
+                            <div class="mb-2">
+                                <input type="text" class="form-control form-control-sm input-bella-gold" id="nomeClienteGold" placeholder="Seu nome completo" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <textarea class="form-control form-control-sm input-bella-gold" id="textoOpiniaoGold" rows="2" placeholder="O que achou da apresentação, das notas e da fixação VIP?" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-sm text-dark fw-bold px-3" style="background-color: #ffd700; font-size: 11px;">
+                                PUBLICAR AVALIAÇÃO OPI
+                            </button>
+                        </form>
+                    </div>
+
+                    <div id="listaComentariosGold" class="d-flex flex-column gap-3">
+                        <div class="pb-2 border-bottom border-secondary border-opacity-10">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-white" style="font-size: 13px;">Fernanda L.</span>
+                                    <span class="badge bg-success-subtle text-success ms-2" style="font-size: 9px;">Compra VIP Verificada ✔</span>
+                                </div>
+                                <small class="text-muted" style="font-size: 10px;">Há 2 dias</small>
+                            </div>
+                            <div style="color: #ffd700; font-size: 10px;" class="my-1">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <p style="font-size: 12px; color: #ccc;" class="m-0">A apresentação desse kit é impecável. O hidratante deixa a pele parecendo seda e a fixação do perfume durou o dia todo!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("_RodapeHome")
+
+<!-- 🎨 ESTILOS CSS REFINADOS PREMIUM -->
+<style>
+    .fundo-gliter-premium {
+        background-color: #070707;
+        background-image: radial-gradient(circle at 15% 20%, rgba(205, 164, 94, 0.1) 1px, transparent 1px), linear-gradient(135deg, #030303 0%, #0d0d0d 50%, #030303 100%);
+    }
+
+    .link-voltar-premium {
+        color: #ffd700;
+        transition: all 0.3s;
+    }
+
+        .link-voltar-premium:hover {
+            color: #fff;
+            transform: translateX(-3px);
+        }
+
+    .miniatura-foto {
+        width: 100%;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+    }
+
+        .miniatura-foto.active, .miniatura-foto:hover {
+            border-color: #ffd700;
+            box-shadow: 0 0 8px rgba(255,215,0,0.3);
+        }
+
+    .moldura-foto-principal {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(205,164,94,0.3);
+    }
+
+    .badge-edicao-ouro {
+        background: linear-gradient(90deg, #b38f51, #ffd700);
+        color: #000;
+        font-size: 9px;
+        font-weight: 800;
+        padding: 4px 10px;
+        border-radius: 50px;
+        display: inline-block;
+    }
+
+    .linha-decorativa-ouro {
+        border: none;
+        height: 1px;
+        background: rgba(205,164,94,0.2);
+        margin: 15px 0;
+    }
+
+    .btn-tamanho-gold {
+        background: #111;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        color: #ccc;
+        padding: 6px 14px;
+        font-size: 11px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-tamanho-gold.active {
+            border-color: #ffd700;
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+    .caixa-compra-ml {
+        background: #111111;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        border-radius: 12px;
+    }
+
+    .btn-comprar-agora-ml {
+        background: #ffd700 !important;
+        color: #000 !important;
+        border: none !important;
+        padding: 12px;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .btn-add-carrinho-ml {
+        background: rgba(255, 215, 0, 0.1);
+        color: #ffd700;
+        border: 1px solid #ffd700;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 13px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .card-recomendacao-gold {
+        background: #111;
+        border: 1px solid rgba(255,215,0,0.15);
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+
+        .card-recomendacao-gold:hover {
+            border-color: #ffd700;
+            transform: translateY(-3px);
+        }
+
+    .btn-outline-gold-sm {
+        border: 1px solid #ffd700;
+        color: #ffd700;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        border-radius: 4px;
+    }
+
+        .btn-outline-gold-sm:hover {
+            background: #ffd700;
+            color: #000;
+        }
+
+    .titulo-secao-fino {
+        color: #cda45e;
+        font-size: 16px;
+        font-weight: 600;
+        border-left: 3px solid #ffd700;
+        padding-left: 10px;
+    }
+
+    .card-conteudo-vip {
+        background: #111111;
+        border: 1px solid rgba(255, 215, 0, 0.15);
+        border-radius: 8px;
+    }
+
+    .border-gold-glow {
+        border-color: rgba(255, 215, 0, 0.3) !important;
+    }
+
+    .icone-mini-gold {
+        font-size: 18px;
+        background: rgba(255, 215, 0, 0.1);
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 215, 0, 0.25);
+    }
+
+    .tabela-fina-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 215, 0, 0.15);
+        background: #111111;
+    }
+
+        .tabela-fina-container table td {
+            padding: 10px 15px !important;
+            border-color: rgba(255, 255, 255, 0.04) !important;
+        }
+
+    .input-bella-gold {
+        background-color: #0a0a0a !important;
+        border: 1px solid rgba(255, 215, 0, 0.2) !important;
+        color: #fff !important;
+        font-size: 12px !important;
+    }
+
+        .input-bella-gold:focus {
+            border-color: #ffd700 !important;
+            box-shadow: none !important;
+        }
+
+    .faq-item-dark {
+        background: #111111 !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 8px !important;
+    }
+
+    .faq-btn-dark {
+        background-color: #111111 !important;
+        color: #ffffff !important;
+        font-size: 13px !important;
+        padding: 14px 18px !important;
+    }
+
+    .faq-corpo-dark {
+        background-color: #0a0a0a;
+        color: #bbbbbb;
+        font-size: 12px;
+        padding: 14px 18px;
+    }
+</style>
+
+<!-- 🧠 JAVASCRIPT CORRIGIDO -->
+<script>
+    function trocarFoto(src) {
+        document.getElementById('fotoPrincipal').src = src;
+        document.querySelectorAll('.miniatura-foto').forEach(img => img.classList.remove('active'));
+        if (event && event.target) event.target.classList.add('active');
+    }
+
+    function adicionarAoCarrinhoPremium(id, nome, preco, foto) {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+        let itemExistente = carrinho.find(item => item.id === id);
+
+        if (itemExistente) {
+            itemExistente.qtd += 1;
+        } else {
+            carrinho.push({
+                id: id,
+                nome: nome,
+                preco: parseFloat(preco),
+                qtd: 1,
+                foto: foto
+            });
+        }
+
+        localStorage.setItem('carrinhoBellaAura', JSON.stringify(carrinho));
+
+        // Atualiza a bolinha do menu na hora
+        if (typeof atualizarBadgeGlobal === 'function') {
+            atualizarBadgeGlobal();
+        } else {
+            let badge = document.getElementById('badgeCarrinho');
+            if (badge) {
+                let total = 0;
+                carrinho.forEach(i => total += i.qtd);
+                badge.innerText = total;
+            }
+        }
+
+        alert(`✨ "${nome}" foi adicionado ao seu carrinho!`);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const estrelas = document.querySelectorAll('.estrela-click-gold');
+        const inputNota = document.getElementById('notaSelecionadaGold');
+
+        estrelas.forEach(estrela => {
+            estrela.addEventListener('click', function() {
+                const valor = parseInt(this.getAttribute('data-valor'));
+                inputNota.value = valor;
+
+                estrelas.forEach(e => {
+                    const eValor = parseInt(e.getAttribute('data-valor'));
+                    if (eValor <= valor) {
+                        e.classList.remove('far');
+                        e.classList.add('fas');
+                        e.style.color = '#ffd700';
+                    } else {
+                        e.classList.remove('fas');
+                        e.classList.add('far');
+                        e.style.color = '#444444';
+                    }
+                });
+            });
+        });
+    });
+
+    function enviarOpiniaoPremium(event) {
+        event.preventDefault();
+
+        const nota = parseInt(document.getElementById('notaSelecionadaGold').value);
+        const nome = document.getElementById('nomeClienteGold').value;
+        const texto = document.getElementById('textoOpiniaoGold').value;
+
+        if (nota === 0) {
+            alert("Por favor Gabi, selecione as estrelinhas para dar sua nota! 😉");
+            return;
+        }
+
+        let estrelasHtml = "";
+        for (let i = 0; i < 5; i++) {
+            if (i < nota) {
+                estrelasHtml += '<i class="fas fa-star" style="color: #ffd700;"></i>';
+            } else {
+                estrelasHtml += '<i class="far fa-star" style="color: #444444;"></i>';
+            }
+        }
+
+        const lista = document.getElementById('listaComentariosGold');
+        const novoComentario = document.createElement('div');
+        novoComentario.className = "pb-2 border-bottom border-secondary border-opacity-10";
+        novoComentario.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="fw-bold text-white" style="font-size: 13px;">${nome}</span>
+                    <span class="badge bg-success-subtle text-success ms-2" style="font-size: 9px;">Compra VIP Verificada ✔</span>
+                </div>
+                <small class="text-muted" style="font-size: 10px;">Agora mesmo</small>
+            </div>
+            <div class="my-1" style="font-size: 10px;">${estrelasHtml}</div>
+            <p style="font-size: 12px; color: #ccc;" class="m-0">${texto}</p>
+        `;
+
+        lista.insertBefore(novoComentario, lista.firstChild);
+
+        document.getElementById('formAvaliacaoPremium').reset();
+        document.getElementById('notaSelecionadaGold').value = "0";
+        document.querySelectorAll('.estrela-click-gold').forEach(e => {
+            e.classList.remove('fas');
+            e.classList.add('far');
+            e.style.color = '#444444';
+        });
+
+        alert("Avaliação VIP publicada com sucesso! 👑✨");
+    }
+</script>

@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Pedido Confirmado - Bella Aura";
+}
+
+<div class="container my-5 py-5 text-center animated-fade" style="max-width: 600px;">
+    <!-- Ícone de Sucesso Animado -->
+    <div class="mb-4">
+        <div class="sucesso-icon-wrapper">
+            <i class="fas fa-check"></i>
+        </div>
+    </div>
+
+    <!-- Mensagem de Sucesso -->
+    <span style="color: #cda45e; font-size: 11px; letter-spacing: 4px; font-weight: 600; text-transform: uppercase;">Muito Obrigado</span>
+    <h1 class="text-white mt-2 mb-3" style="font-size: 32px; letter-spacing: 3px; font-weight: 500; text-transform: uppercase;">Pedido Confirmado!</h1>
+
+    <p class="text-muted px-3" style="font-size: 14px; line-height: 1.6;">
+        Sua experiência com a Bella Aura começou. Já recebemos a confirmação do seu pagamento e nosso atelier já está preparando o seu kit personalizado com todo o carinho e perfume que você merece.
+    </p>
+
+    <!-- Detalhes do Pedido Minimalista -->
+    <div class="p-4 my-5 card-detalhes-sucesso text-start" style="background-color: rgba(255, 255, 255, 0.01); border: 1px solid rgba(205,164,94,0.12); border-radius: 12px;">
+        <h4 style="color: #cda45e; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+            Acompanhe seu Pedido
+        </h4>
+        <div class="d-flex justify-content-between mb-2" style="font-size: 13px;">
+            <span class="text-muted">Código do Pedido:</span>
+            <span class="text-white font-monospace">#BA-2026-8942</span>
+        </div>
+        <div class="d-flex justify-content-between mb-2" style="font-size: 13px;">
+            <span class="text-muted">Previsão de Envio:</span>
+            <span class="text-white">Em até 24 horas úteis</span>
+        </div>
+        <div class="d-flex justify-content-between" style="font-size: 13px;">
+            <span class="text-muted">E-mail de Confirmação:</span>
+            <span class="text-white">Enviado para o seu e-mail cadastrado</span>
+        </div>
+    </div>
+
+    <!-- Botão para voltar a navegar -->
+    <a href="/Home/Index" class="btn btn_dourado_cheio px-5 py-3 text-uppercase" style="letter-spacing: 2px; font-weight: 600; font-size: 12px; box-shadow: 0 4px 15px rgba(205, 164, 94, 0.2);">
+        Continuar Navegando
+    </a>
+</div>
+
+@await Html.PartialAsync("_RodapeHome")
+
+<!-- 🎨 ESTILOS DA PÁGINA DE SUCESSO -->
+<style>
+    .sucesso-icon-wrapper {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(205, 164, 94, 0.05);
+        border: 2px solid #cda45e;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        color: #cda45e;
+        font-size: 32px;
+        box-shadow: 0 0 25px rgba(205, 164, 94, 0.2);
+        animation: scaleIn 0.5s ease-in-out;
+    }
+
+    /* Animações */
+    .animated-fade {
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes scaleIn {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>

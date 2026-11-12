@@ -1,0 +1,691 @@
+﻿@{
+    ViewData["BodyClass"] = "pagina-home";
+}
+
+<section class="banner_principal">
+    <div class="row align-items-center h-100">
+        <div class="col-md-6 bloco_texto_banner">
+            <h1 class="titulo_banner">ELEGÂNCIA<br><span class="detalhe_titulo">EM CADA DETALHE</span></h1>
+
+            <p class="subtitulo_banner">Kits exclusivos que combinam com seu estilo.</p>
+
+            <div class="grupo_botoes_banner">
+                <a asp-controller="Home" asp-action="Kits" class="btn btn_dourado_cheio">VER KITS</a>
+                <a asp-controller="Home" asp-action="MontarKit" class="btn btn_dourado_borda">MONTAR MEU KIT</a>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="quadro_placeholder_banner">
+                <div class="conteudo_placeholder">
+                    <i class="fas fa-box-open icone_placeholder"></i>
+                    <p>[ Espaço para a foto dos Kits Premium de Perfumes ]</p>
+                    <span>Resolução sugerida: 800x600px</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO DE FILTROS RÁPIDOS -->
+<section class="secao_filtros my-4">
+    <div class="text-start" style="position: relative; top: -24px; z-index: 10;">
+        <span style="color: #cda45e; font-size: 12px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; opacity: 0.9; padding-left: 5px;">
+            Filtros Rápidos
+        </span>
+    </div>
+
+    <div class="quadro_barra_filtros">
+        <div class="row text-center g-4">
+
+            <!-- ESTILO -->
+            <div class="col-md-4 coluna_filtro">
+                <span class="titulo_filtro"><i class="fas fa-pump-soap me-2"></i>ESTILO</span>
+                <div class="grupo_botoes_filtro">
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="estilo" data-valor="delicado">Delicado</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="estilo" data-valor="sensual">Sensual</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="estilo" data-valor="fresco">Fresco</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="estilo" data-valor="marcante">Marcante</button>
+                </div>
+            </div>
+
+            <!-- FAMÍLIA OLFATIVA -->
+            <div class="col-md-5 coluna_filtro barra_lateral_separadora">
+                <span class="titulo_filtro"><i class="fas fa-seedling me-2"></i>FAMÍLIA OLFATIVA</span>
+                <div class="grupo_botoes_filtro">
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="familia" data-valor="doce">Doce</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="familia" data-valor="floral">Floral</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="familia" data-valor="amadeirado">Amadeirado</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="familia" data-valor="citrico">Cítrico</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="familia" data-valor="oriental">Oriental</button>
+                </div>
+            </div>
+
+            <!-- PREÇO -->
+            <div class="col-md-3 coluna_filtro barra_lateral_separadora">
+                <span class="titulo_filtro"><i class="fas fa-tag me-2"></i>PREÇO</span>
+                <div class="grupo_botoes_filtro">
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="preco" data-valor="ate180">Até R$180</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="preco" data-valor="180a250">R$180 - R$250</button>
+                    <button type="button" class="btn btn_filtro_opcao" data-tipo="preco" data-valor="acima250">R$250+</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- VITRINE DE PRODUTOS -->
+<section class="vitrine_produtos my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="titulo_secao">KITS EM DESTAQUE</h2>
+        <a asp-controller="Home" asp-action="Kits" class="link_ver_todos m-0">VER TODOS <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- PRODUTO 1: Essência Gold Bella -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="sensual" data-familia="doce" data-preco="280.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-1"
+                            onclick="alternarFavorito(this, 'kit-1', 'Kit Essência Gold Bella', 'R$ 280,00', 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=500&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #cda45e; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold; color: #fff;">SENSUAL</span>
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Essência Gold Bella</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Âmbar - Baunilha - Marcante</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 280,00</span>
+                        <a href="/Home/Detalhes?nome=Essência Gold Bella&preco=R$ 280,00&cheiro=Âmbar - Baunilha - Marcante&imagem=https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 2: Brisa de Lavanda -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="fresco" data-familia="citrico" data-preco="165.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-2"
+                            onclick="alternarFavorito(this, 'kit-2', 'Kit Brisa de Lavanda', 'R$ 165,00', 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #7b68ee; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold; color: #fff;">FRESCO</span>
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Brisa de Lavanda</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Lavanda - Alecrim - Relaxante</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 165,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Brisa de Lavanda&preco=R$ 165,00&cheiro=Lavanda - Alecrim - Relaxante&imagem=https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 3: Segredos de Jasmim -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="delicado" data-familia="floral" data-preco="210.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-3"
+                            onclick="alternarFavorito(this, 'kit-3', 'Kit Segredos de Jasmim', 'R$ 210,00', 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #e0b0ff; color: #000; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold;">DELICADO</span>
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Segredos de Jasmim</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Jasmim - Gardênia - Envolvente</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 210,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Segredos de Jasmim&preco=R$ 210,00&cheiro=Jasmim - Gardênia - Envolvente&imagem=https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 4: Madeira Nobre -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="marcante" data-familia="amadeirado" data-preco="245.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-4"
+                            onclick="alternarFavorito(this, 'kit-4', 'Kit Madeira Nobre', 'R$ 245,00', 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #8b5a2b; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold; color: #fff;">MARCANTE</span>
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Madeira Nobre</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Sândalo - Cedro - Intenso</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 245,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Madeira Nobre&preco=R$ 245,00&cheiro=Sândalo - Cedro - Intenso&imagem=https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 5: Cítrico Imperial -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="fresco" data-familia="citrico" data-preco="185.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-5"
+                            onclick="alternarFavorito(this, 'kit-5', 'Kit Cítrico Imperial', 'R$ 185,00', 'https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #ffd700; color: #000; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold;">FRESCO</span>
+                    <img src="https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Cítrico Imperial</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Bergamota - Capim Limão - Refrescante</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 185,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Cítrico Imperial&preco=R$ 185,00&cheiro=Bergamota - Capim Limão - Refrescante&imagem=https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 6: Verbena Real -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="fresco" data-familia="citrico" data-preco="170.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-6"
+                            onclick="alternarFavorito(this, 'kit-6', 'Kit Verbena Real', 'R$ 170,00', 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=800&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #2e8b57; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold; color: #fff;">FRESCO</span>
+                    <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Verbena Real</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Verbena - Limão Siciliano - Refrescante</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 170,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Verbena Real&preco=R$ 170,00&cheiro=Verbena - Limão Siciliano - Refrescante&imagem=https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 7: Baunilha & Poesia -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="sensual" data-familia="doce" data-preco="225.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-7"
+                            onclick="alternarFavorito(this, 'kit-7', 'Kit Baunilha & Poesia', 'R$ 225,00', 'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #d2b48c; color: #000; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold;">SENSUAL</span>
+                    <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Baunilha & Poesia</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Fava Tonka - Orquídea - Adocicado</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 225,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Baunilha & Poesia&preco=R$ 225,00&cheiro=Fava Tonka - Orquídea - Adocicado&imagem=https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 8: Patchouli Imperial -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="marcante" data-familia="amadeirado" data-preco="295.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-8"
+                            onclick="alternarFavorito(this, 'kit-8', 'Kit Patchouli Imperial', 'R$ 295,00', 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=800&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #4a2c2a; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold; color: #fff;">MARCANTE</span>
+                    <img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Patchouli Imperial</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Patchouli - Almíscar - Sedutor</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 295,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Patchouli Imperial&preco=R$ 295,00&cheiro=Patchouli - Almíscar - Sedutor&imagem=https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 9: Alecrim da Provence -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="fresco" data-familia="citrico" data-preco="155.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-9"
+                            onclick="alternarFavorito(this, 'kit-9', 'Kit Alecrim da Provence', 'R$ 155,00', 'https://images.unsplash.com/photo-1517256064527-09c53b2d0ec6?auto=format&fit=crop&w=500&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #556b2f; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold; color: #fff;">FRESCO</span>
+                    <img src="https://images.unsplash.com/photo-1517256064527-09c53b2d0ec6?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Alecrim Provence</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Alecrim - Eucalipto - Estimulante</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 155,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Alecrim Provence&preco=R$ 155,00&cheiro=Alecrim - Eucalipto - Estimulante&imagem=https://images.unsplash.com/photo-1517256064527-09c53b2d0ec6?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 10: Rosas de Grasse -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="delicado" data-familia="floral" data-preco="270.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-10"
+                            onclick="alternarFavorito(this, 'kit-10', 'Kit Rosas de Grasse', 'R$ 270,00', 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #ffb6c1; color: #000; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold;">DELICADO</span>
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Rosas de Grasse</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Pétalas de Rosa - Peônia - Sofisticado</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 270,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Rosas de Grasse&preco=R$ 270,00&cheiro=Pétalas de Rosa - Peônia - Sofisticado&imagem=https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 11: Chá Branco Real -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="delicado" data-familia="oriental" data-preco="195.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-11"
+                            onclick="alternarFavorito(this, 'kit-11', 'Kit Chá Branco Real', 'R$ 195,00', 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=500&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+
+                    <span class="tag_produto tag_delicado" style="background-color: #f5f5dc; color: #000; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold;">DELICADO</span>
+                    <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Chá Branco Real</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Chá Branco - Lírio do Vale - Sereno</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 195,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Chá Branco Real&preco=R$ 195,00&cheiro=Chá Branco - Lírio do Vale - Sereno&imagem=https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUTO 12: Orquídea Negra -->
+        <div class="col-md-3 mb-4 item-vitrine-col">
+            <div class="card_produto card-produto-premium"
+                 style="background-color: #111111; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;"
+                 data-estilo="sensual" data-familia="oriental" data-preco="310.00">
+                <div class="quadro_foto_produto" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+
+                    <button type="button"
+                            class="btn-favorito-card-inline"
+                            data-id="kit-12"
+                            onclick="alternarFavorito(this, 'kit-12', 'Kit Orquídea Negra', 'R$ 310,00', 'https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=500&q=80', 'home')"
+                            style="position: absolute; top: 15px; right: 15px; z-index: 5; background: transparent; border: none; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                     
+                    <span class="tag_produto tag_delicado" style="background-color: #800080; position: absolute; left: 15px; bottom: 15px; z-index: 5; padding: 4px 10px; font-size: 10px; font-weight: bold; color: #fff;">SENSUAL</span>
+                    <img src="https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="p-3" style="background-color: #111111; flex-grow: 1;">
+                    <h3 class="nome_produto m-0" style="font-size: 16px; font-weight: 500; color: #ffffff; line-height: 1.2;">Kit Orquídea Negra</h3>
+                    <p class="descricao_produto mt-1 mb-0" style="font-size: 13px; color: #888888;">Orquídea - Cacau - Misterioso</p>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span class="preco_produto" style="color: #ffffff; font-weight: bold;">R$ 310,00</span>
+                        <a href="/Home/Detalhes?nome=Kit Orquídea Negra&preco=R$ 310,00&cheiro=Orquídea - Cacau - Misterioso&imagem=https://images.unsplash.com/photo-1588405748373-122b2321bc31?auto=format&fit=crop&w=800&q=80" class="btn btn_ver_detalhes" style="border: 1px solid #cda45e; color: #cda45e; padding: 5px 15px; border-radius: 4px; font-size: 12px; text-decoration: none;">VER DETALHES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="banners_secundarios" style="margin-top: -80px !important; margin-bottom: 20px;">
+    <div class="row g-4">
+
+        <!-- 1. QUADRO DA ESQUERDA (Adicionado style="min-height: 180px;" na div principal) -->
+        <div class="col-md-6">
+            <div class="quadro_banner_secundario placeholder_premium" style="min-height: 159px;">
+                <div class="row align-items-center h-100 w-100 m-0">
+                    <div class="col-7 p-4">
+                        <span class="sub_secundario">DESTAQUE PREMIUM</span>
+                        <h3 class="titulo_secundario">Kit Luxo Essencial</h3>
+                        <p class="texto_secundario">Um presente sofisticado para momentos especiais.</p>
+                        <!-- O min-height foi removido daqui do botão: -->
+                        <a href="/Home/DetalhesPremium" class="btn" style="border: 1px solid #cda45e; color: #cda45e; font-size: 11px;
+                            font-weight: 600; padding: 6px 18px; border-radius: 4px; text-decoration: none; transition: all 0.3s; background: transparent;">
+                            VER KIT
+                        </a>
+                    </div>
+                    <div class="col-5 h-100 d-flex align-items-center justify-content-center borda_grade_foto">
+                        <span class="texto_mini_placeholder">[ Foto Kit ]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. QUADRO DA DIREITA -->
+        <div class="col-md-6">
+            <div class="quadro_banner_secundario placeholder_monte_seu_jeito">
+                <div class="row align-items-center h-100 w-100 m-0">
+                    <div class="col-3 text-center p-3">
+                        <i class="fas fa-gift icone_presente_secundario"></i>
+                    </div>
+                    <div class="col-9 p-4">
+                        <span class="sub_secundario">MONTE DO SEU JEITO</span>
+                        <h3 class="titulo_secundario">Crie seu kit perfeito</h3>
+                        <p class="texto_secundario">Escolha suas fragrâncias favoritas e monte um kit exclusivo para você.</p>
+                        <a asp-controller="Home" asp-action="MontarKit" class="btn btn_dourado_compacto">MONTAR AGORA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Html.PartialAsync("_RodapeHome")
+
+<style>
+    .btn-favorito-card-inline {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+    }
+
+        .btn-favorito-card-inline:hover {
+            transform: scale(1.15);
+        }
+
+        .btn-favorito-card-inline .icone_favorito {
+            color: #ffffff !important;
+            font-size: 18px;
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+    .secao_filtros .btn_filtro_opcao.active-gold-filter {
+        background-color: #cda45e !important;
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+</style>
+
+<!-- 🧠 SCRIPT INTELIGENTE DE SELEÇÃO MÚLTIPLA DE FILTROS -->
+<!-- 🧠 SCRIPT INTELIGENTE DE SELEÇÃO MÚLTIPLA DE FILTROS E FAVORITOS -->
+<script>
+    // Armazena os filtros ativos por categoria
+    let filtrosAtivos = {
+        estilo: null,
+        familia: null,
+        preco: null
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Carrega e pinta os corações salvos assim que a página abre
+        atualizarIconesFavoritos();
+
+        // 2. Configura os eventos de clique dos filtros
+        const botoesHome = document.querySelectorAll('.secao_filtros .btn_filtro_opcao');
+
+        botoesHome.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tipo = this.getAttribute('data-tipo');
+                const valor = this.getAttribute('data-valor');
+
+                if (filtrosAtivos[tipo] === valor) {
+                    filtrosAtivos[tipo] = null;
+                    this.classList.remove('active-gold-filter');
+                } else {
+                    const grupo = this.closest('.coluna_filtro');
+                    if (grupo) {
+                        grupo.querySelectorAll('.btn_filtro_opcao').forEach(b => b.classList.remove('active-gold-filter'));
+                    }
+                    filtrosAtivos[tipo] = valor;
+                    this.classList.add('active-gold-filter');
+                }
+
+                aplicarFiltrosCruzadosHome();
+            });
+        });
+    });
+
+    // Função que aplica os filtros cruzados
+    function aplicarFiltrosCruzadosHome() {
+        const cards = document.querySelectorAll('.vitrine_produtos .item-vitrine-col');
+        let encontrados = 0;
+
+        cards.forEach(col => {
+            const card = col.querySelector('.card_produto');
+            if (!card) return;
+
+            const estilo = card.getAttribute('data-estilo');
+            const familia = card.getAttribute('data-familia');
+            const preco = parseFloat(card.getAttribute('data-preco') || '0');
+
+            let atendeEstilo = !filtrosAtivos.estilo || estilo === filtrosAtivos.estilo;
+            let atendeFamilia = !filtrosAtivos.familia || familia === filtrosAtivos.familia;
+            let atendePreco = true;
+
+            if (filtrosAtivos.preco === 'ate180') atendePreco = preco <= 180;
+            else if (filtrosAtivos.preco === '180a250') atendePreco = preco > 180 && preco <= 250;
+            else if (filtrosAtivos.preco === 'acima250') atendePreco = preco > 250;
+
+            if (atendeEstilo && atendeFamilia && atendePreco) {
+                col.style.display = 'block';
+                encontrados++;
+            } else {
+                col.style.display = 'none';
+            }
+        });
+
+        // Manipula a mensagem de aviso
+        let caixaAviso = document.getElementById('aviso-sem-produtos');
+        const containerVitrine = document.querySelector('.vitrine_produtos');
+
+        if (encontrados === 0) {
+            if (!caixaAviso) {
+                caixaAviso = document.createElement('div');
+                caixaAviso.id = 'aviso-sem-produtos';
+                caixaAviso.className = 'col-12 text-center py-5';
+                caixaAviso.innerHTML = `
+                    <div style="color: #cda45e; font-size: 18px; font-weight: 500;">
+                        <i class="fas fa-search me-2"></i>Nenhum kit encontrado para essa combinação.
+                    </div>
+                    <p class="text-muted mt-2 small">Tente desmarcar alguns filtros para ver mais opções.</p>
+                `;
+                containerVitrine.appendChild(caixaAviso);
+            }
+            caixaAviso.style.display = 'block';
+        } else if (caixaAviso) {
+            caixaAviso.style.display = 'none';
+        }
+    }
+
+    // Alterna a adição/remoção dos favoritos no LocalStorage
+    function alternarFavorito(elemento, id, nome, preco, imagem, categoria) {
+        let favoritos = JSON.parse(localStorage.getItem('bella_favoritos')) || [];
+        const index = favoritos.findIndex(p => p.id === id);
+
+        if (index === -1) {
+            favoritos.push({ id, nome, preco, imagem, categoria });
+        } else {
+            favoritos.splice(index, 1);
+        }
+
+        localStorage.setItem('bella_favoritos', JSON.stringify(favoritos));
+
+        // Atualiza a cor dos ícones imediatamente
+        atualizarIconesFavoritos();
+    }
+
+    // Pinta de dourado todos os corações ativos (cards e topo)
+    function atualizarIconesFavoritos() {
+        let favoritos = JSON.parse(localStorage.getItem('bella_favoritos')) || [];
+        const botoesFavorito = document.querySelectorAll('.btn-favorito-card-inline');
+
+        // 1. Atualiza os corações dos Cards na Vitrine
+        botoesFavorito.forEach(btn => {
+            let idProduto = btn.getAttribute('data-id');
+
+            if (!idProduto) {
+                const onclickAttr = btn.getAttribute('onclick') || '';
+                const match = onclickAttr.match(/alternarFavorito\(this,\s*'([^']+)'/);
+                if (match && match[1]) idProduto = match[1];
+            }
+
+            const svg = btn.querySelector('svg');
+
+            if (idProduto && svg) {
+                const jaEhFavorito = favoritos.some(p => p.id === idProduto);
+
+                if (jaEhFavorito) {
+                    svg.setAttribute('fill', '#cda45e');
+                    svg.setAttribute('stroke', '#cda45e');
+                } else {
+                    svg.setAttribute('fill', 'none');
+                    svg.setAttribute('stroke', '#ffffff');
+                }
+            }
+        });
+
+        // 2. Atualiza o ícone de Coração do Menu Superior (Topo)
+        const iconeTopo = document.querySelector('.nav-icon-favoritos svg, a[href*="Favoritos"] svg');
+        if (iconeTopo) {
+            if (favoritos.length > 0) {
+                iconeTopo.setAttribute('fill', '#cda45e');
+                iconeTopo.setAttribute('stroke', '#cda45e');
+            } else {
+                iconeTopo.setAttribute('fill', 'none');
+                iconeTopo.setAttribute('stroke', '#ffffff');
+            }
+        }
+    }
+</script>

@@ -1,0 +1,326 @@
+﻿@{
+    ViewData["Title"] = "Meu Carrinho - Bella Aura";
+}
+
+<div class="container py-4 mb-5" style="font-family: 'Poppins', sans-serif; color: #ffffff;">
+
+    <!-- Título do Carrinho -->
+    <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom border-secondary border-opacity-10">
+        <div>
+            <h2 class="m-0 fw-bold" style="font-size: 24px; color: #fff;">Meu Carrinho de Compras</h2>
+            <small class="text-muted" style="font-size: 12px;">Revise seus itens exclusivos antes de prosseguir</small>
+        </div>
+        <a href="/Home/Index" class="text-decoration-none link-voltar-carrinho" style="font-size: 13px; color: #cda45e;">
+            &#8592; Continuar Comprando
+        </a>
+    </div>
+
+    <div class="row g-4 align-items-start">
+
+        <!-- 🛒 COLUNA DA ESQUERDA: LISTA DE PRODUTOS -->
+        <div class="col-lg-8">
+            <!-- Container onde os itens entram quando forem adicionados -->
+            <div id="listaItensCarrinho" class="d-flex flex-column gap-3"></div>
+
+            <!-- Mensagem de Carrinho Vazio (Exibida por padrão) -->
+            <div id="carrinhoVazio" class="text-center p-5 card-item-carrinho">
+                <h4 class="fw-bold text-white mb-2">Seu carrinho está vazio 🛒</h4>
+                <p class="text-muted" style="font-size: 13px;">Que tal conhecer nossas fragrâncias exclusivas e adicionar seus itens favoritos?</p>
+                <a href="/Home/Index" class="btn btn-sm fw-bold px-4 mt-2" style="background-color: #cda45e; color: #000;">VER PRODUTOS DA LOJA</a>
+            </div>
+        </div>
+
+        <!-- 🧾 COLUNA DA DIREITA: CEP, CUPOM E RESUMO -->
+        <div class="col-lg-4">
+            <div class="caixa-resumo-carrinho p-4">
+
+                <h5 class="fw-bold text-white mb-3" style="font-size: 16px; border-left: 3px solid #cda45e; padding-left: 10px;">
+                    Resumo do Pedido
+                </h5>
+
+                <!-- Simulação de Frete por CEP -->
+                <div class="mb-3">
+                    <label style="font-size: 11px; color: #aaa; font-weight: 600;">CALCULAR FRETE E PRAZO:</label>
+                    <div class="input-group input-group-sm mt-1">
+                        <input type="text" class="form-control input-bella-sm" id="inputCep" placeholder="00000-000" maxlength="9">
+                        <button class="btn btn-outline-gold-sm" type="button" onclick="calcularFrete()">Calcular</button>
+                    </div>
+                    <small id="infoFrete" class="text-success mt-1 d-block" style="font-size: 11px; display: none !important;"></small>
+                </div>
+
+                <!-- Cupom de Desconto -->
+                <div class="mb-3 pb-3 border-bottom border-secondary border-opacity-10">
+                    <label style="font-size: 11px; color: #aaa; font-weight: 600;">CUPOM DE DESCONTO:</label>
+                    <div class="input-group input-group-sm mt-1">
+                        <input type="text" class="form-control input-bella-sm text-uppercase" id="inputCupom" placeholder="Ex: BELLA10">
+                        <button class="btn btn-outline-gold-sm" type="button" onclick="aplicarCupom()">Aplicar</button>
+                    </div>
+                    <small id="infoCupom" class="mt-1 d-block" style="font-size: 11px;"></small>
+                </div>
+
+                <!-- Detalhamento dos Valores -->
+                <div class="d-flex justify-content-between mb-2" style="font-size: 13px; color: #ccc;">
+                    <span>Subtotal</span>
+                    <span id="txtSubtotal">R$ 0,00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2" style="font-size: 13px; color: #ccc;">
+                    <span>Frete</span>
+                    <span id="txtFrete" class="text-muted">A calcular</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3" style="font-size: 13px; color: #28a745; display: none;" id="linhaDesconto">
+                    <span>Desconto Cupom</span>
+                    <span id="txtDesconto">- R$ 0,00</span>
+                </div>
+
+                <hr style="border-color: rgba(255,255,255,0.1);">
+
+                <div class="d-flex justify-content-between mb-4 align-items-baseline">
+                    <span class="fw-bold text-white" style="font-size: 16px;">Total</span>
+                    <span class="fw-bold text-warning" style="font-size: 24px;" id="txtTotal">R$ 0,00</span>
+                </div>
+
+                <!-- Botão Checkout -->
+                <button class="btn btn-comprar-agora w-100 mb-2" onclick="window.location.href='/Home/Checkout'">
+                    FINALIZAR COMPRA ➔
+                </button>
+
+                <div class="text-center mt-3" style="font-size: 11px; color: #888;">
+                    🔒 Compra 100% Segura • Criptografia SSL
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<partial name="~/Views/Home/_RodapeClean.cshtml" />
+
+<!-- 🎨 ESTILOS EXCLUSIVOS DO CARRINHO -->
+<style>
+    .card-item-carrinho {
+        background-color: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+    }
+
+    .seletor-qtd {
+        background: #0a0a0a;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .btn-qtd {
+        background: transparent;
+        border: none;
+        color: #cda45e;
+        width: 28px;
+        height: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .btn-qtd:hover {
+            background: rgba(205, 164, 94, 0.2);
+        }
+
+    .input-qtd {
+        background: transparent;
+        border: none;
+        color: #fff;
+        width: 32px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .caixa-resumo-carrinho {
+        background-color: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+    }
+
+    .input-bella-sm {
+        background-color: #0a0a0a !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #fff !important;
+        font-size: 12px !important;
+    }
+
+        .input-bella-sm:focus {
+            border-color: #cda45e !important;
+            box-shadow: none !important;
+        }
+
+    .btn-outline-gold-sm {
+        border: 1px solid #cda45e !important;
+        color: #cda45e !important;
+        font-size: 11px !important;
+        font-weight: 600;
+    }
+
+        .btn-outline-gold-sm:hover {
+            background-color: #cda45e !important;
+            color: #000 !important;
+        }
+
+    .btn-comprar-agora {
+        background-color: #cda45e !important;
+        color: #ffffff !important;
+        border: none !important;
+        padding: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-comprar-agora:hover {
+            background-color: #b38f51 !important;
+            transform: translateY(-2px);
+        }
+</style>
+
+<!-- 🧠 SCRIPT DO CARRINHO (AJUSTADO E INTEGRADO) -->
+<script>
+    let valorFrete = 0;
+    let percentualDesconto = 0;
+
+    function renderizarCarrinho() {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+        let container = document.getElementById('listaItensCarrinho');
+        let avisoVazio = document.getElementById('carrinhoVazio');
+
+        if (!container) return;
+
+        // Se o carrinho estiver sem nada
+        if (carrinho.length === 0) {
+            container.style.display = 'none';
+            if (avisoVazio) avisoVazio.style.display = 'block';
+            recalcularTotais([]);
+            if (typeof atualizarBadgeGlobal === 'function') atualizarBadgeGlobal();
+            return;
+        }
+
+        container.style.display = 'flex';
+        if (avisoVazio) avisoVazio.style.display = 'none';
+
+        container.innerHTML = '';
+
+        carrinho.forEach(item => {
+            let totalItem = item.preco * item.qtd;
+            container.innerHTML += `
+                <div class="card-item-carrinho p-3" id="item-${item.id}">
+                    <div class="row align-items-center g-3">
+                        <div class="col-md-2 col-3">
+                            <img src="${item.foto}" class="w-100 rounded border border-secondary border-opacity-25" style="height: 80px; object-fit: cover;">
+                        </div>
+                        <div class="col-md-5 col-9">
+                            <h5 class="m-0 mt-1 fw-bold text-white" style="font-size: 15px;">${item.nome}</h5>
+                            <span class="text-success" style="font-size: 11px;">✔ Em Estoque</span>
+                        </div>
+                        <div class="col-md-3 col-6 d-flex align-items-center">
+                            <div class="seletor-qtd d-flex align-items-center">
+                                <button type="button" class="btn-qtd" onclick="alterarQtd(${item.id}, -1)">-</button>
+                                <input type="text" class="input-qtd" value="${item.qtd}" readonly>
+                                <button type="button" class="btn-qtd" onclick="alterarQtd(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-6 text-end">
+                            <div class="fw-bold text-warning" style="font-size: 15px;">R$ ${totalItem.toFixed(2).replace('.', ',')}</div>
+                            <a href="javascript:void(0)" class="text-danger text-decoration-none" style="font-size: 11px;" onclick="removerItem(${item.id})">
+                                🗑️ Remover
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        recalcularTotais(carrinho);
+        if (typeof atualizarBadgeGlobal === 'function') atualizarBadgeGlobal();
+    }
+
+    function alterarQtd(id, delta) {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+        let item = carrinho.find(i => i.id === id);
+
+        if (item) {
+            if (item.qtd + delta >= 1) {
+                item.qtd += delta;
+                localStorage.setItem('carrinhoBellaAura', JSON.stringify(carrinho));
+                renderizarCarrinho();
+            }
+        }
+    }
+
+    function removerItem(id) {
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+        carrinho = carrinho.filter(i => i.id !== id);
+
+        localStorage.setItem('carrinhoBellaAura', JSON.stringify(carrinho));
+        renderizarCarrinho();
+    }
+
+    function recalcularTotais(carrinho) {
+        let subtotal = 0;
+        carrinho.forEach(item => {
+            subtotal += item.preco * item.qtd;
+        });
+
+        let valorDesconto = subtotal * percentualDesconto;
+        let totalFinal = subtotal > 0 ? (subtotal - valorDesconto + valorFrete) : 0;
+
+        document.getElementById('txtSubtotal').innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+
+        if (percentualDesconto > 0 && subtotal > 0) {
+            document.getElementById('linhaDesconto').style.display = 'flex';
+            document.getElementById('txtDesconto').innerText = `- R$ ${valorDesconto.toFixed(2).replace('.', ',')}`;
+        } else {
+            document.getElementById('linhaDesconto').style.display = 'none';
+        }
+
+        document.getElementById('txtTotal').innerText = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+    }
+
+    function calcularFrete() {
+        let cep = document.getElementById('inputCep').value;
+        let info = document.getElementById('infoFrete');
+
+        if (cep.length >= 8) {
+            valorFrete = 15.00;
+            document.getElementById('txtFrete').innerText = "R$ 15,00 (Postagem Expresso)";
+            document.getElementById('txtFrete').className = "text-white fw-bold";
+            info.style.display = "block";
+            info.innerText = "🚚 Chega em 3 a 5 dias úteis";
+            let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+            recalcularTotais(carrinho);
+        } else {
+            alert("Gabi, digite um CEP válido para calcular o frete!");
+        }
+    }
+
+    function aplicarCupom() {
+        let cupom = document.getElementById('inputCupom').value.trim().toUpperCase();
+        let info = document.getElementById('infoCupom');
+
+        if (cupom === "BELLA10") {
+            percentualDesconto = 0.10;
+            info.className = "text-success mt-1 d-block";
+            info.innerText = "✔ Cupom BELLA10 aplicado (10% OFF)!";
+            let carrinho = JSON.parse(localStorage.getItem('carrinhoBellaAura')) || [];
+            recalcularTotais(carrinho);
+        } else {
+            info.className = "text-danger mt-1 d-block";
+            info.innerText = "❌ Cupom inválido. Tente 'BELLA10'.";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        renderizarCarrinho();
+    });
+</script>

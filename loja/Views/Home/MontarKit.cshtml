@@ -1,0 +1,371 @@
+﻿@{
+    ViewData["Title"] = "Montar Seu Kit - Bella Aura";
+}
+
+<div class="container my-5 pt-4">
+    <div class="row g-5 align-items-start justify-content-center">
+
+        <div class="col-md-5 d-none d-md-block">
+            <div class="banner-decorativo-etapas" style="border: 1px solid rgba(205, 164, 94, 0.15); border-radius: 12px; overflow: hidden; padding: 6px;">
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80"
+                     class="img-fluid"
+                     alt="Bella Aura Experience"
+                     style="border-radius: 8px; width: 100; height: 600px; object-fit: cover; opacity: 0.85;">
+            </div>
+        </div>
+
+        <div class="col-md-7">
+
+            <div class="text-start mb-4">
+                <h1 class="text-white" style="font-size: 24px; letter-spacing: 3px; font-weight: 500; text-transform: uppercase; margin-bottom: 5px;">Exclusividade em Etapas</h1>
+                <p class="text-muted" style="font-size: 13px; margin-bottom: 0;">Crie uma combinação única que combine com o seu estilo.</p>
+            </div>
+
+            <div class="d-flex justify-content-between position-relative alignment-steps mb-5 px-2">
+                <div class="position-absolute top-50 start-0 end-0 translate-y-middle" style="height: 2px; background-color: rgba(205, 164, 94, 0.15); z-index: 1;"></div>
+
+                <div class="step-item active text-center position-relative" id="step-1" style="z-index: 2;">
+                    <div class="step-circle">1</div>
+                    <span class="step-text">A Caixa</span>
+                </div>
+                <div class="step-item text-center position-relative" id="step-2" style="z-index: 2;">
+                    <div class="step-circle">2</div>
+                    <span class="step-text">Os Produtos</span>
+                </div>
+                <div class="step-item text-center position-relative" id="step-3" style="z-index: 2;">
+                    <div class="step-circle">3</div>
+                    <span class="step-text">O Cartão</span>
+                </div>
+            </div>
+
+            <div class="conteudo-etapas-wrapper">
+
+                <div id="etapa-caixa" class="etapa-conteudo animated-fade">
+                    <h3 class="titulo-etapa mb-4"><i class="fas fa-box-open me-2" style="color: #cda45e; font-size: 14px;"></i> Passo 1: Escolha a base do seu presente</h3>
+
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="card-opcao-kit p-3 text-center active" onclick="selecionarCaixa(this, 'Caixa Clássica Bella', 25.00)">
+                                <div class="img-container mb-3">
+                                    <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=300&q=80" alt="Caixa Clássica" class="img-fluid rounded">
+                                </div>
+                                <h4 class="nome-opcao">Caixa Clássica Bella</h4>
+                                <p class="desc-opcao">Cartonada preta com fita de cetim dourada. Perfeita para 2 a 3 itens.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 card-footer-preco">
+                                    <span class="preco-opcao">R$ 25,00</span>
+                                    <span class="btn-selecionar"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="card-opcao-kit p-3 text-center" onclick="selecionarCaixa(this, 'Caixa Premium Ouro', 45.00)">
+                                <div class="img-container mb-3">
+                                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=300&q=80" alt="Caixa Premium" class="img-fluid rounded">
+                                </div>
+                                <h4 class="nome-opcao">Caixa Premium Ouro</h4>
+                                <p class="desc-opcao">Madeira nobre texturizada, interior aveludado e fecho magnético de luxo.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 card-footer-preco">
+                                    <span class="preco-opcao">R$ 45,00</span>
+                                    <span class="btn-selecionar"><i class="far fa-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="etapa-produtos" class="etapa-conteudo d-none animated-fade">
+                    <h3 class="titulo-etapa mb-4"><i class="fas fa-pump-soap me-2" style="color: #cda45e; font-size: 14px;"></i> Passo 2: Adicione as fragrâncias e mimos</h3>
+
+                    <div class="row g-3">
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-magic mb-3" style="color: #cda45e; font-size: 24px; opacity: 0.5;"></i>
+                            <p class="text-white-50" style="font-size: 14px; letter-spacing: 1px;">Sua caixa foi definida!</p>
+                            <p class="text-muted" style="font-size: 12px;">Em breve teremos a vitrine de perfumes, sabonetes e hidratantes corporais aqui.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="etapa-cartao" class="etapa-conteudo d-none animated-fade">
+                    <h3 class="titulo-etapa mb-4"><i class="fas fa-envelope-open-text me-2" style="color: #cda45e; font-size: 14px;"></i> Passo 3: Escreva uma mensagem especial</h3>
+
+                    <div class="row g-3">
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-pen-fancy mb-3" style="color: #cda45e; font-size: 24px; opacity: 0.5;"></i>
+                            <p class="text-white-50" style="font-size: 14px; letter-spacing: 1px;">Dê o toque sentimental perfeito!</p>
+                            <p class="text-muted" style="font-size: 12px;">Em breve você poderá escolher os tipos de cartões e digitar a sua dedicatória.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-between mt-5">
+                <button class="btn btn_dourado_borda" id="btn-voltar" onclick="voltarPasso()">Voltar</button>
+                <button class="btn btn_dourado_cheio" id="btn-avancar" onclick="avancarPasso()">Avançar Passo</button>
+            </div>
+
+            <div class="quadro_resumo p-4 mt-5" style="border: 1px solid rgba(205, 164, 94, 0.12); border-radius: 8px; background-color: rgba(205, 164, 94, 0.02); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <h4 style="color: #cda45e; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; font-weight: 500;">
+                    <i class="fas fa-gift me-2" style="font-size: 12px; opacity: 0.9;"></i> Seu Kit Exclusivo
+                </h4>
+                <div class="d-flex justify-content-between align-items-center text-white" style="font-size: 13px;">
+                    <span id="resumo-itens" style="font-style: italic; opacity: 0.7; color: #aaa;">Caixa Clássica Bella selecionada.</span>
+                    <span style="font-weight: 500; color: #cda45e; font-size: 15px; letter-spacing: 1px;">TOTAL: <span id="resumo-total" style="font-weight: 600;">R$ 25,00</span></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("_RodapeHome")
+
+<style>
+    /* Estilos das Etapas da Barra de Progresso */
+    .step-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #121212;
+        border: 2px solid rgba(205, 164, 94, 0.25);
+        color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        margin: 0 auto 8px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .step-item.active .step-circle {
+        background-color: #cda45e;
+        border-color: #cda45e;
+        color: #000;
+        box-shadow: 0 0 15px rgba(205, 164, 94, 0.4);
+    }
+
+    .step-text {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #666;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .step-item.active .step-text {
+        color: #cda45e;
+        font-weight: 600;
+    }
+
+    /* Linha divisora das etapas */
+    .titulo-etapa {
+        color: #fff;
+        font-size: 15px;
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(205, 164, 94, 0.1);
+        padding-bottom: 10px;
+        font-weight: 400;
+    }
+
+    /* Cards de Opções de Kits */
+    .card-opcao-kit {
+        background-color: rgba(255, 255, 255, 0.01);
+        border: 1px solid rgba(205, 164, 94, 0.12);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .card-opcao-kit:hover {
+            border-color: rgba(205, 164, 94, 0.5);
+            transform: translateY(-3px);
+            background-color: rgba(205, 164, 94, 0.02);
+            box-shadow: 0 5px 15px rgba(205, 164, 94, 0.08);
+        }
+
+        .card-opcao-kit.active {
+            border-color: #cda45e;
+            background-color: rgba(205, 164, 94, 0.04);
+            box-shadow: 0 0 15px rgba(205, 164, 94, 0.12);
+        }
+
+        .card-opcao-kit .img-container img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-opcao-kit:hover .img-container img,
+        .card-opcao-kit.active .img-container img {
+            opacity: 0.95;
+        }
+
+    .nome-opcao {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .desc-opcao {
+        color: #8e8e8e;
+        font-size: 11px;
+        line-height: 1.4;
+        margin-bottom: 0;
+        padding: 0 5px;
+    }
+
+    .card-footer-preco {
+        border-top: 1px solid rgba(205, 164, 94, 0.08);
+    }
+
+    .preco-opcao {
+        color: #cda45e;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .btn-selecionar {
+        color: rgba(205, 164, 94, 0.3);
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
+
+    .card-opcao-kit.active .btn-selecionar {
+        color: #cda45e;
+    }
+
+    /* Animação suave na troca de passos */
+    .animated-fade {
+        animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script>
+    let passoAtual = 1;
+    let caixaSelecionada = "Caixa Clássica Bella";
+    let valorCaixa = 25.00;
+
+    // Atualiza o estado inicial do botão Voltar
+    document.addEventListener("DOMContentLoaded", function() {
+        atualizarBotoes();
+    });
+
+    // Função para tratar o clique de seleção de uma Caixa
+    function selecionarCaixa(elemento, nome, valor) {
+        // Remove a classe ativa de todas as outras caixas
+        document.querySelectorAll('.card-opcao-kit').forEach(card => {
+            card.classList.remove('active');
+            card.querySelector('.btn-selecionar').innerHTML = '<i class="far fa-circle"></i>';
+        });
+
+        // Adiciona classe ativa no card clicado
+        elemento.classList.add('active');
+        elemento.querySelector('.btn-selecionar').innerHTML = '<i class="fas fa-check-circle"></i>';
+
+        // Atualiza variáveis globais de estado
+        caixaSelecionada = nome;
+        valorCaixa = valor;
+
+        // Atualiza o quadro de resumo na hora
+        atualizarResumo();
+    }
+
+    // Atualiza os textos e valores no card de resumo
+    function atualizarResumo() {
+        const resumoItens = document.getElementById('resumo-itens');
+        const resumoTotal = document.getElementById('resumo-total');
+
+        resumoItens.innerText = `${caixaSelecionada} selecionada.`;
+        resumoTotal.innerText = `R$ ${valorCaixa.toFixed(2).replace('.', ',')}`;
+    }
+
+    // Avançar de passo
+    function avancarPasso() {
+        if (passoAtual < 3) {
+            passoAtual++;
+            trocarPassoLayout();
+        }
+    }
+
+    // Voltar de passo
+    function voltarPasso() {
+        if (passoAtual > 1) {
+            passoAtual--;
+            trocarPassoLayout();
+        }
+    }
+
+    // Controla a exibição das seções e a barra de progresso no topo
+    function trocarPassoLayout() {
+        // 1. Esconde todos os conteúdos
+        document.getElementById('etapa-caixa').classList.add('d-none');
+        document.getElementById('etapa-produtos').classList.add('d-none');
+        document.getElementById('etapa-cartao').classList.add('d-none');
+
+        // 2. Mostra o passo atual
+        if (passoAtual === 1) {
+            document.getElementById('etapa-caixa').classList.remove('d-none');
+        } else if (passoAtual === 2) {
+            document.getElementById('etapa-produtos').classList.remove('d-none');
+        } else if (passoAtual === 3) {
+            document.getElementById('etapa-cartao').classList.remove('d-none');
+        }
+
+        // 3. Atualiza os marcadores no topo
+        for (let i = 1; i <= 3; i++) {
+            const stepItem = document.getElementById(`step-${i}`);
+            if (i <= passoAtual) {
+                stepItem.classList.add('active');
+            } else {
+                stepItem.classList.remove('active');
+            }
+        }
+
+        atualizarBotoes();
+    }
+
+    // Ativa/Desativa botões baseado em qual etapa o cliente está
+    function atualizarBotoes() {
+        const btnVoltar = document.getElementById('btn-voltar');
+        const btnAvancar = document.getElementById('btn-avancar');
+
+        if (passoAtual === 1) {
+            btnVoltar.disabled = true;
+        } else {
+            btnVoltar.disabled = false;
+        }
+
+        if (passoAtual === 3) {
+            btnAvancar.innerText = "Finalizar Kit";
+            // Quando clicar no último passo, vai enviar as escolhas para a tela de finalização!
+            btnAvancar.onclick = function() {
+                window.location.href = `/Home/FinalizarKit?caixa=${encodeURIComponent(caixaSelecionada)}&preco=${valorCaixa}`;
+            };
+        } else {
+            btnAvancar.innerText = "Avançar Passo";
+            btnAvancar.onclick = avancarPasso;
+        }
+    }
+</script>
