@@ -2,6 +2,7 @@ using loja.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using loja.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace loja.Controllers
 {
@@ -9,6 +10,9 @@ namespace loja.Controllers
     {
         // Criamos uma variável para guardar o acesso ao banco
         private readonly AppDbContext _context;
+
+        // Ferramenta que embaralha e confere senhas
+        private readonly PasswordHasher<Usuario> _hasher = new PasswordHasher<Usuario>();
 
         // O construtor do controller recebe o banco automaticamente
         public HomeController(AppDbContext context)
@@ -98,18 +102,23 @@ namespace loja.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Login(string email, string senha)
         {
-            var usuarioValido = _context.Usuarios
-                .FirstOrDefault(u => u.Email == email && u.Senha == senha);
+            // Agora busca só pelo e-mail (a senha no banco está embaralhada)
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
 
-            if (usuarioValido != null)
+            if (usuario != null)
             {
-                // 💾 SALVA O NOME DO USUÁRIO NA SESSÃO!
-                HttpContext.Session.SetString("UsuarioNome", usuarioValido.Nome);
+                // Confere se a senha digitada bate com o hash salvo
+                var resultado = _hasher.VerifyHashedPassword(usuario, usuario.Senha, senha);
 
-                return RedirectToAction("Index");
+                if (resultado != PasswordVerificationResult.Failed)
+                {
+                    HttpContext.Session.SetString("UsuarioNome", usuario.Nome);
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Erro = "E-mail ou senha incorretos!";
@@ -172,13 +181,15 @@ namespace loja.Controllers
             {
                 Nome = nome,
                 Email = email,
-                Senha = senha, // Dica: no futuro a gente criptografa isso, por enquanto vai puro!
                 Cep = cep,
                 Numero = numero,
                 Endereco = endereco,
                 Bairro = bairro,
                 CidadeEstado = cidadeEstado
             };
+
+            // Salva a senha embaralhada, nunca a original
+            novoUsuario.Senha = _hasher.HashPassword(novoUsuario, senha);
 
             // 4. Mágica do Entity Framework: Adiciona e salva no MySQL
             _context.Usuarios.Add(novoUsuario);
