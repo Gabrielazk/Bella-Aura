@@ -1,4 +1,4 @@
-namespace loja.Models
+﻿namespace BellaAura.Models
 {
     public class ErrorViewModel
     {

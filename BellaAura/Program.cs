@@ -1,4 +1,4 @@
-using loja.Data;
+﻿using BellaAura.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);                

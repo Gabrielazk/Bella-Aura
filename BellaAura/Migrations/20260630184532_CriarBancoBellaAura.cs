@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace loja.Migrations
+namespace BellaAura.Migrations
 {
     /// <inheritdoc />
     public partial class CriarBancoBellaAura : Migration

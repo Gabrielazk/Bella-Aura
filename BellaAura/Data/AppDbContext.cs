@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using loja.Models;
+using BellaAura.Models;
 
-namespace loja.Data
+namespace BellaAura.Data
 {
     public class AppDbContext : DbContext
     {

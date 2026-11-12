@@ -1,10 +1,10 @@
-using loja.Models;
+﻿using BellaAura.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using loja.Data;
+using BellaAura.Data;
 using Microsoft.AspNetCore.Identity;
 
-namespace loja.Controllers
+namespace BellaAura.Controllers
 {
     public class HomeController : Controller
     {

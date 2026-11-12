@@ -1,0 +1,4 @@
+﻿<Solution>
+  <Project Path="BellaAura.Tests/BellaAura.Tests.csproj" />
+  <Project Path="BellaAura/BellaAura.csproj" />
+</Solution>

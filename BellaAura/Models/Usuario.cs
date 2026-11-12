@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace loja.Models
+namespace BellaAura.Models
 {
     public class Usuario
     {

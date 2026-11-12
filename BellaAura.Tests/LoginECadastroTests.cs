@@ -1,6 +1,6 @@
-﻿using loja.Controllers;
-using loja.Data;
-using loja.Models;
+﻿using BellaAura.Controllers;
+using BellaAura.Data;
+using BellaAura.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 
-namespace loja.Tests;
+namespace BellaAura.Tests;
 
 public class LoginECadastroTests
 {
